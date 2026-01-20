@@ -6,6 +6,24 @@
 [![AWS](https://img.shields.io/badge/AWS-EKS-FF9900?logo=amazon-aws)](https://aws.amazon.com/eks/)
 [![Kubernetes](https://img.shields.io/badge/Kubernetes-1.30-326CE5?logo=kubernetes)](https://kubernetes.io/)
 
+## ⚠️ IMPORTANTE: Configuração Inicial
+
+**Antes de usar este projeto, você DEVE:**
+
+1. ✅ **Criar seu bucket S3** para armazenar o estado do Terraform
+2. ✅ **Editar `main.tf`** e substituir `SEU-BUCKET-TERRAFORM` pelo nome do seu bucket
+3. ✅ **Nunca commitar** arquivos `.tfvars` com credenciais reais (já protegido pelo `.gitignore`)
+
+```bash
+# 1. Criar bucket S3
+aws s3 mb s3://seu-nome-unico-terraform --region us-east-1
+
+# 2. Editar main.tf (linha 12)
+# backend "s3" {
+#   bucket = "seu-nome-unico-terraform"  # ← Altere aqui
+# }
+```
+
 ## 📋 O que este projeto faz?
 
 Provisiona uma infraestrutura completa e production-ready de **Amazon EKS** (Kubernetes gerenciado) usando **Terraform**, incluindo:
@@ -160,7 +178,7 @@ projeto-eks/
 
 | Variável | Descrição | Padrão |
 |----------|-----------|--------|
-| `project_name` | Nome do projeto | `rgtrovao-project` |
+| `project_name` | Nome do projeto | `meu-projeto` |
 | `aws_region` | Região AWS | `us-east-1` |
 | `vpc_cidr` | CIDR da VPC | `10.0.0.0/16` |
 | `availability_zones` | AZs a usar | `["us-east-1a", "us-east-1b"]` |

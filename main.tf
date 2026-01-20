@@ -9,8 +9,8 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "rgtrovao-terraform-bucket"
-    key    = "rgtrovao/terraform.tfstate"
+    bucket = "SEU-BUCKET-TERRAFORM"  # Altere para seu bucket S3
+    key    = "eks/terraform.tfstate"
     region = "us-east-1"
   }
 }
