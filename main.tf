@@ -86,7 +86,6 @@ module "route_tables" {
 
   tags = var.tags
 }
-<<<<<<< HEAD
 
 # Módulo EKS (cluster e node group)
 module "eks" {
@@ -106,11 +105,5 @@ module "eks" {
   instance_types  = var.eks_node_instance_types
   node_disk_size  = var.eks_node_disk_size
 
-  enable_vpc_cni_addon    = var.enable_vpc_cni_addon
-  enable_coredns_addon    = var.enable_coredns_addon
-  enable_kube_proxy_addon = var.enable_kube_proxy_addon
-
   tags = var.tags
 }
-=======
->>>>>>> parent of e1972b4 (Inclusão do módulo de EKS)

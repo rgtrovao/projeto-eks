@@ -30,6 +30,7 @@ tags = {
   Application = "rgtrovao"
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 # Configurações padrão do EKS
 eks_cluster_version    = "1.30"
@@ -43,5 +44,7 @@ eks_node_disk_size     = 20
 enable_vpc_cni_addon    = true
 enable_coredns_addon    = true
 enable_kube_proxy_addon = true
+=======
+>>>>>>> parent of e1972b4 (Inclusão do módulo de EKS)
 =======
 >>>>>>> parent of e1972b4 (Inclusão do módulo de EKS)

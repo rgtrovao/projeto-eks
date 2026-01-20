@@ -128,6 +128,7 @@ terraform destroy
 | `database_subnet_cidrs` | CIDRs das subnets de BD | `["10.0.21.0/24", "10.0.22.0/24", "10.0.23.0/24"]` |
 | `enable_nat_gateway` | Habilitar NAT Gateway | `true` |
 <<<<<<< HEAD
+<<<<<<< HEAD
 | `eks_cluster_version` | Versão do Kubernetes no EKS | `"1.30"` |
 | `eks_node_desired_size` | Número desejado de nós no node group | `2` |
 | `eks_node_min_size` | Número mínimo de nós no node group | `2` |
@@ -137,6 +138,8 @@ terraform destroy
 | `enable_vpc_cni_addon` | Habilitar add-on VPC CNI gerenciado | `true` |
 | `enable_coredns_addon` | Habilitar add-on CoreDNS gerenciado | `true` |
 | `enable_kube_proxy_addon` | Habilitar add-on kube-proxy gerenciado | `true` |
+=======
+>>>>>>> parent of e1972b4 (Inclusão do módulo de EKS)
 =======
 >>>>>>> parent of e1972b4 (Inclusão do módulo de EKS)
 
@@ -155,6 +158,7 @@ O projeto gera os seguintes outputs:
 - `database_route_table_ids`: IDs das route tables de banco de dados
 - `nat_gateway_ids`: IDs dos NAT Gateways
 <<<<<<< HEAD
+<<<<<<< HEAD
 - `eks_cluster_name`: Nome do cluster EKS
 - `eks_cluster_endpoint`: Endpoint da API do cluster EKS
 - `eks_cluster_ca_certificate`: Certificado CA (base64) do cluster EKS
@@ -164,6 +168,8 @@ O projeto gera os seguintes outputs:
 - `vpc_cni_addon_arn`: ARN do add-on VPC CNI (se habilitado)
 - `coredns_addon_arn`: ARN do add-on CoreDNS (se habilitado)
 - `kube_proxy_addon_arn`: ARN do add-on kube-proxy (se habilitado)
+=======
+>>>>>>> parent of e1972b4 (Inclusão do módulo de EKS)
 =======
 >>>>>>> parent of e1972b4 (Inclusão do módulo de EKS)
 
@@ -219,6 +225,7 @@ Cria subnets públicas, privadas e de banco de dados, além de NAT Gateways quan
 Configura as tabelas de roteamento para cada tipo de subnet.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ### Módulo EKS
 Cria o cluster EKS e um node group gerenciado com nós `t3.micro` em subnets privadas, seguindo boas práticas (IAM Roles dedicadas, security groups separados para control plane e nós, e auto-scaling configurável).
 
@@ -229,6 +236,8 @@ Cria o cluster EKS e um node group gerenciado com nós `t3.micro` em subnets pri
 
 Todos os add-ons são gerenciados pela AWS, facilitando atualizações e manutenção.
 
+=======
+>>>>>>> parent of e1972b4 (Inclusão do módulo de EKS)
 =======
 >>>>>>> parent of e1972b4 (Inclusão do módulo de EKS)
 ## 🐛 Troubleshooting

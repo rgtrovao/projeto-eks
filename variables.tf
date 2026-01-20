@@ -76,6 +76,7 @@ variable "tags" {
   default     = {}
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 variable "eks_cluster_version" {
   description = "Versão do Kubernetes para o cluster EKS"
@@ -130,5 +131,7 @@ variable "enable_kube_proxy_addon" {
   type        = bool
   default     = true
 }
+=======
+>>>>>>> parent of e1972b4 (Inclusão do módulo de EKS)
 =======
 >>>>>>> parent of e1972b4 (Inclusão do módulo de EKS)
