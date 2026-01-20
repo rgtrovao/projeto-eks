@@ -75,3 +75,39 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "eks_cluster_version" {
+  description = "Versão do Kubernetes para o cluster EKS"
+  type        = string
+  default     = "1.30"
+}
+
+variable "eks_node_desired_size" {
+  description = "Número desejado de nós no node group EKS"
+  type        = number
+  default     = 2
+}
+
+variable "eks_node_min_size" {
+  description = "Número mínimo de nós no node group EKS"
+  type        = number
+  default     = 2
+}
+
+variable "eks_node_max_size" {
+  description = "Número máximo de nós no node group EKS"
+  type        = number
+  default     = 3
+}
+
+variable "eks_node_instance_types" {
+  description = "Tipos de instância para os nós do EKS"
+  type        = list(string)
+  default     = ["t3.micro"]
+}
+
+variable "eks_node_disk_size" {
+  description = "Tamanho do disco em GB para os nós do EKS"
+  type        = number
+  default     = 20
+}

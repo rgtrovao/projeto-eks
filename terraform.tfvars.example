@@ -29,3 +29,11 @@ tags = {
   CostCenter  = "Engineering"
   Application = "rgtrovao"
 }
+
+# Configurações padrão do EKS
+eks_cluster_version    = "1.30"
+eks_node_desired_size  = 2
+eks_node_min_size      = 2
+eks_node_max_size      = 3
+eks_node_instance_types = ["t3.micro"]
+eks_node_disk_size     = 20

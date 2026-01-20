@@ -86,3 +86,24 @@ module "route_tables" {
 
   tags = var.tags
 }
+
+# Módulo EKS (cluster e node group)
+module "eks" {
+  source = "./modules/eks"
+
+  cluster_name    = "${var.project_name}-eks-cluster"
+  cluster_version = var.eks_cluster_version
+
+  vpc_id             = module.vpc.vpc_id
+  private_subnet_ids = module.subnets.private_subnet_ids
+  public_subnet_ids  = module.subnets.public_subnet_ids
+
+  node_group_name = "${var.project_name}-eks-node-group"
+  desired_size    = var.eks_node_desired_size
+  min_size        = var.eks_node_min_size
+  max_size        = var.eks_node_max_size
+  instance_types  = var.eks_node_instance_types
+  node_disk_size  = var.eks_node_disk_size
+
+  tags = var.tags
+}
