@@ -9,7 +9,7 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "SEU-BUCKET-TERRAFORM"  # Altere para seu bucket S3
+    bucket = "rgtrovao-terraform-bucket"
     key    = "eks/terraform.tfstate"
     region = "us-east-1"
   }
@@ -31,7 +31,7 @@ locals {
   cluster_name = "${var.project_name}-eks"
 }
 
-# Módulo de Rede (VPC, Subnets, IGW, NAT, Route Tables)
+# Network Module (VPC, Subnets, IGW, NAT, Route Tables)
 module "network" {
   source = "./modules/network"
 
@@ -43,7 +43,7 @@ module "network" {
   tags = var.tags
 }
 
-# Módulo EKS (Cluster + Node Group)
+# EKS Module (Cluster + Node Group)
 module "eks" {
   source = "./modules/eks"
 

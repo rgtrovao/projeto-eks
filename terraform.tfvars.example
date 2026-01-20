@@ -1,153 +1,153 @@
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# 🚀 Configuração do Projeto EKS
+# 🚀 EKS Project Configuration
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 #
-# Este arquivo contém exemplos de configuração para o projeto.
-# Copie para 'terraform.tfvars' e ajuste conforme necessário:
+# This file contains configuration examples for the project.
+# Copy to 'terraform.tfvars' and adjust as needed:
 #
 #   cp terraform.tfvars.example terraform.tfvars
 #
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 # ┌─────────────────────────────────────────────────────────┐
-# │ 📋 IDENTIFICAÇÃO DO PROJETO                            │
+# │ 📋 PROJECT IDENTIFICATION                              │
 # └─────────────────────────────────────────────────────────┘
 
-project_name = "meu-projeto"
+project_name = "rgtrovao-eks"
 environment  = "dev"  # dev, staging, prod
 
 # ┌─────────────────────────────────────────────────────────┐
-# │ 🌍 CONFIGURAÇÃO AWS                                    │
+# │ 🌍 AWS CONFIGURATION                                   │
 # └─────────────────────────────────────────────────────────┘
 
 aws_region = "us-east-1"
 
 # ┌─────────────────────────────────────────────────────────┐
-# │ 🌐 CONFIGURAÇÃO DE REDE                                │
+# │ 🌐 NETWORK CONFIGURATION                               │
 # └─────────────────────────────────────────────────────────┘
 
-# CIDR da VPC (10.0.0.0/16 = 65.536 IPs)
+# VPC CIDR (10.0.0.0/16 = 65,536 IPs)
 vpc_cidr = "10.0.0.0/16"
 
-# Availability Zones (recomendado: 2 para redundância)
+# Availability Zones (recommended: 2 for redundancy)
 availability_zones = ["us-east-1a", "us-east-1b"]
 
-# NAT Gateway para acesso à internet das subnets privadas
-# true  = $32/mês (necessário para pull de imagens, APIs externas)
-# false = $0/mês   (economiza, mas sem internet nos nodes)
+# NAT Gateway for private subnet internet access
+# true  = $32/month (needed for image pulls, external APIs)
+# false = $0/month  (saves money, but no internet on nodes)
 enable_nat_gateway = true
 
 # ┌─────────────────────────────────────────────────────────┐
-# │ ☸️  CONFIGURAÇÃO DO CLUSTER EKS                        │
+# │ ☸️  EKS CLUSTER CONFIGURATION                          │
 # └─────────────────────────────────────────────────────────┘
 
-# Versão do Kubernetes
-# Versões disponíveis: 1.28, 1.29, 1.30
-# Recomendado: Use a versão mais recente estável
+# Kubernetes Version
+# Available versions: 1.28, 1.29, 1.30
+# Recommended: Use the latest stable version
 eks_cluster_version = "1.30"
 
 # ┌─────────────────────────────────────────────────────────┐
-# │ 🖥️  CONFIGURAÇÃO DOS WORKER NODES                      │
+# │ 🖥️  WORKER NODES CONFIGURATION                         │
 # └─────────────────────────────────────────────────────────┘
 
-# Tipo de Capacidade
-# SPOT       = 70% mais barato, pode ser interrompido (ideal para dev/staging)
-# ON_DEMAND  = Preço integral, estável (ideal para produção)
+# Capacity Type
+# SPOT       = 70% cheaper, can be interrupted (ideal for dev/staging)
+# ON_DEMAND  = Full price, stable (ideal for production)
 eks_node_capacity_type = "SPOT"
 
-# Tipos de Instância
+# Instance Types
 # t3.micro   = 2 vCPU, 1GB RAM    (~$0.0104/h On-Demand, ~$0.0031/h Spot)
 # t3.small   = 2 vCPU, 2GB RAM    (~$0.0208/h On-Demand, ~$0.0062/h Spot)
 # t3.medium  = 2 vCPU, 4GB RAM    (~$0.0416/h On-Demand, ~$0.0125/h Spot)
-# t3a.micro  = Alternativa AMD (mais barata)
+# t3a.micro  = AMD alternative (cheaper)
 #
-# 💡 Dica: Liste múltiplos tipos para maior disponibilidade de Spot:
-#          ["t3.micro", "t3a.micro", "t2.micro"]
+# 💡 Tip: List multiple types for better Spot availability:
+#         ["t3.micro", "t3a.micro", "t2.micro"]
 eks_node_instance_types = ["t3.micro"]
 
-# Número de Nodes
-# Para estudos: min=2, max=2, desired=2 (fixo)
-# Para produção: min=3, max=10, desired=3 (auto-scaling)
+# Number of Nodes
+# For studies: min=2, max=2, desired=2 (fixed)
+# For production: min=3, max=10, desired=3 (auto-scaling)
 eks_node_desired_size = 2
 eks_node_min_size     = 2
 eks_node_max_size     = 2
 
-# Tamanho do Disco (GB)
-# Mínimo recomendado: 20GB
-# Para produção: 30-50GB
+# Disk Size (GB)
+# Recommended minimum: 20GB
+# For production: 30-50GB
 eks_node_disk_size = 20
 
 # ┌─────────────────────────────────────────────────────────┐
-# │ 🏷️  TAGS PERSONALIZADAS                                │
+# │ 🏷️  CUSTOM TAGS                                        │
 # └─────────────────────────────────────────────────────────┘
 
-# Tags adicionais para todos os recursos
-# Útil para: billing, automação, organização
+# Additional tags for all resources
+# Useful for: billing, automation, organization
 tags = {
-  Owner      = "seu-nome"
-  CostCenter = "estudos"
+  Owner      = "your-name"
+  CostCenter = "studies"
   Terraform  = "true"
-  Repository = "https://github.com/seu-usuario/projeto-eks"
+  Repository = "https://github.com/your-username/eks-project"
 }
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# 📊 ESTIMATIVA DE CUSTOS (us-east-1)
+# 📊 COST ESTIMATE (us-east-1)
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 #
-# CONFIGURAÇÃO ATUAL (Spot + NAT):
+# CURRENT CONFIGURATION (Spot + NAT):
 # ┌─────────────────────────────────────────────────────┐
-# │ Uso 24/7:      ~$127/mês                           │
-# │ Uso 20h/sem:   ~$15/mês  (88% economia)            │
-# │ Uso 10h/sem:   ~$8/mês   (94% economia)            │
+# │ Usage 24/7:    ~$127/month                         │
+# │ Usage 20h/wk:  ~$15/month  (88% savings)           │
+# │ Usage 10h/wk:  ~$8/month   (94% savings)           │
 # └─────────────────────────────────────────────────────┘
 #
-# ECONOMIA MÁXIMA (Spot + SEM NAT):
+# MAXIMUM SAVINGS (Spot + NO NAT):
 # enable_nat_gateway = false
 # ┌─────────────────────────────────────────────────────┐
-# │ Uso 24/7:      ~$95/mês                            │
-# │ Uso 20h/sem:   ~$12/mês  (90% economia)            │
-# │ Uso 10h/sem:   ~$6/mês   (95% economia)            │
+# │ Usage 24/7:    ~$95/month                          │
+# │ Usage 20h/wk:  ~$12/month  (90% savings)           │
+# │ Usage 10h/wk:  ~$6/month   (95% savings)           │
 # └─────────────────────────────────────────────────────┘
 #
-# PRODUÇÃO (On-Demand + NAT):
+# PRODUCTION (On-Demand + NAT):
 # eks_node_capacity_type = "ON_DEMAND"
 # ┌─────────────────────────────────────────────────────┐
-# │ Uso 24/7:      ~$138/mês                           │
+# │ Usage 24/7:    ~$138/month                         │
 # └─────────────────────────────────────────────────────┘
 #
-# 💡 Ver análise completa: CUSTOS.md
+# 💡 See complete analysis: COSTS.md
 #
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# 🎯 PERFIS DE CONFIGURAÇÃO RECOMENDADOS
+# 🎯 RECOMMENDED CONFIGURATION PROFILES
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 #
-# 📚 ESTUDOS / APRENDIZADO:
+# 📚 STUDIES / LEARNING:
 # ──────────────────────────────────────────────────────────
 # enable_nat_gateway = false
 # eks_node_capacity_type = "SPOT"
 # eks_node_instance_types = ["t3.micro"]
 # eks_node_desired_size = 2
-# → Custo: ~$6-8/mês (usar sob demanda)
+# → Cost: ~$6-8/month (on-demand usage)
 #
-# 🧪 DESENVOLVIMENTO / TESTES:
+# 🧪 DEVELOPMENT / TESTING:
 # ──────────────────────────────────────────────────────────
 # enable_nat_gateway = true
 # eks_node_capacity_type = "SPOT"
 # eks_node_instance_types = ["t3.micro", "t3a.micro"]
 # eks_node_desired_size = 2
 # eks_node_max_size = 4
-# → Custo: ~$12-15/mês (usar sob demanda)
+# → Cost: ~$12-15/month (on-demand usage)
 #
-# 🎭 STAGING / PRÉ-PRODUÇÃO:
+# 🎭 STAGING / PRE-PRODUCTION:
 # ──────────────────────────────────────────────────────────
 # enable_nat_gateway = true
 # eks_node_capacity_type = "SPOT"
 # eks_node_instance_types = ["t3.small"]
 # eks_node_desired_size = 2
 # eks_node_max_size = 6
-# → Custo: ~$140/mês (24/7)
+# → Cost: ~$140/month (24/7)
 #
-# 🏭 PRODUÇÃO:
+# 🏭 PRODUCTION:
 # ──────────────────────────────────────────────────────────
 # enable_nat_gateway = true
 # eks_node_capacity_type = "ON_DEMAND"
@@ -155,17 +155,17 @@ tags = {
 # eks_node_min_size = 3
 # eks_node_max_size = 10
 # eks_node_desired_size = 3
-# → Custo: ~$180/mês (24/7)
+# → Cost: ~$180/month (24/7)
 #
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# 💡 DICAS DE ECONOMIA
+# 💡 COST-SAVING TIPS
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 #
-# 1. Use SPOT para ambientes não-críticos (economia de 70%)
-# 2. Desabilite NAT Gateway em dev se não precisar (economiza $32/mês)
-# 3. Destrua a infra quando não estiver usando (terraform destroy)
-# 4. Use t3.micro para estudos (elegível Free Tier 750h/mês no 1º ano)
-# 5. Configure alertas de custo no AWS Budget
-# 6. Monitore uso com AWS Cost Explorer
+# 1. Use SPOT for non-critical environments (70% savings)
+# 2. Disable NAT Gateway in dev if not needed (saves $32/month)
+# 3. Destroy infra when not in use (terraform destroy)
+# 4. Use t3.micro for studies (Free Tier eligible 750h/month in 1st year)
+# 5. Set up cost alerts with AWS Budgets
+# 6. Monitor usage with AWS Cost Explorer
 #
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

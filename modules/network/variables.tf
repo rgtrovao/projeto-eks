@@ -1,27 +1,27 @@
 variable "project_name" {
-  description = "Nome do projeto para nomenclatura de recursos"
+  description = "Project name for resource naming"
   type        = string
 }
 
 variable "vpc_cidr" {
-  description = "CIDR block para a VPC"
+  description = "CIDR block for VPC"
   type        = string
   default     = "10.0.0.0/16"
 }
 
 variable "availability_zones" {
-  description = "Lista de Availability Zones"
+  description = "List of Availability Zones"
   type        = list(string)
 }
 
 variable "enable_nat_gateway" {
-  description = "Habilitar NAT Gateway para subnets privadas"
+  description = "Enable NAT Gateway for private subnets"
   type        = bool
   default     = true
 }
 
 variable "tags" {
-  description = "Tags para aplicar aos recursos"
+  description = "Tags to apply to resources"
   type        = map(string)
   default     = {}
 }

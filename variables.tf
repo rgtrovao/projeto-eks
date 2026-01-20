@@ -1,23 +1,23 @@
 variable "aws_region" {
-  description = "Região AWS"
+  description = "AWS Region"
   type        = string
   default     = "us-east-1"
 }
 
 variable "project_name" {
-  description = "Nome do projeto"
+  description = "Project name"
   type        = string
-  default     = "meu-projeto"
+  default     = "rgtrovao-eks"
 }
 
 variable "environment" {
-  description = "Ambiente (dev, staging, prod)"
+  description = "Environment (dev, staging, prod)"
   type        = string
   default     = "dev"
 }
 
 variable "vpc_cidr" {
-  description = "CIDR block da VPC"
+  description = "VPC CIDR block"
   type        = string
   default     = "10.0.0.0/16"
 }
@@ -29,56 +29,56 @@ variable "availability_zones" {
 }
 
 variable "enable_nat_gateway" {
-  description = "Habilitar NAT Gateway (recomendado para produção)"
+  description = "Enable NAT Gateway (recommended for production)"
   type        = bool
   default     = true
 }
 
 variable "tags" {
-  description = "Tags adicionais"
+  description = "Additional tags"
   type        = map(string)
   default     = {}
 }
 
-# Variáveis EKS
+# EKS Variables
 variable "eks_cluster_version" {
-  description = "Versão do Kubernetes"
+  description = "Kubernetes version"
   type        = string
   default     = "1.30"
 }
 
 variable "eks_node_desired_size" {
-  description = "Número desejado de nodes"
+  description = "Desired number of nodes"
   type        = number
   default     = 2
 }
 
 variable "eks_node_min_size" {
-  description = "Número mínimo de nodes"
+  description = "Minimum number of nodes"
   type        = number
   default     = 2
 }
 
 variable "eks_node_max_size" {
-  description = "Número máximo de nodes"
+  description = "Maximum number of nodes"
   type        = number
   default     = 2
 }
 
 variable "eks_node_instance_types" {
-  description = "Tipos de instância dos nodes"
+  description = "Node instance types"
   type        = list(string)
   default     = ["t3.micro"]
 }
 
 variable "eks_node_disk_size" {
-  description = "Tamanho do disco dos nodes (GB)"
+  description = "Node disk size (GB)"
   type        = number
   default     = 20
 }
 
 variable "eks_node_capacity_type" {
-  description = "Tipo de capacidade dos nodes (ON_DEMAND ou SPOT)"
+  description = "Node capacity type (ON_DEMAND or SPOT)"
   type        = string
   default     = "SPOT"
 }

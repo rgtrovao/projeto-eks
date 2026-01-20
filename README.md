@@ -1,59 +1,57 @@
-# 🚀 Projeto EKS - Infraestrutura AWS com Terraform
+# 🚀 EKS Project - AWS Infrastructure with Terraform
 
-> Cluster Kubernetes completo e otimizado na AWS com **economia de até 94%** usando estratégia sob demanda.
+> Complete and optimized Kubernetes cluster on AWS with **up to 94% savings** using on-demand strategy.
 
 [![Terraform](https://img.shields.io/badge/Terraform-1.0+-623CE4?logo=terraform)](https://www.terraform.io/)
 [![AWS](https://img.shields.io/badge/AWS-EKS-FF9900?logo=amazon-aws)](https://aws.amazon.com/eks/)
 [![Kubernetes](https://img.shields.io/badge/Kubernetes-1.30-326CE5?logo=kubernetes)](https://kubernetes.io/)
 
-## ⚠️ IMPORTANTE: Configuração Inicial
+## ⚠️ IMPORTANT: Initial Setup
 
-**Antes de usar este projeto, você DEVE:**
+**Before using this project:**
 
-1. ✅ **Criar seu bucket S3** para armazenar o estado do Terraform
-2. ✅ **Editar `main.tf`** e substituir `SEU-BUCKET-TERRAFORM` pelo nome do seu bucket
-3. ✅ **Nunca commitar** arquivos `.tfvars` com credenciais reais (já protegido pelo `.gitignore`)
+- ✅ The S3 bucket `rgtrovao-terraform-bucket` is already configured in `main.tf`
+- ✅ The project name is set to `rgtrovao-eks`
+- ✅ **Never commit** `.tfvars` files with real credentials (already protected by `.gitignore`)
 
 ```bash
-# 1. Criar bucket S3
-aws s3 mb s3://seu-nome-unico-terraform --region us-east-1
+# Ensure the S3 bucket exists
+aws s3 ls s3://rgtrovao-terraform-bucket --region us-east-1
 
-# 2. Editar main.tf (linha 12)
-# backend "s3" {
-#   bucket = "seu-nome-unico-terraform"  # ← Altere aqui
-# }
+# If it doesn't exist, create it:
+aws s3 mb s3://rgtrovao-terraform-bucket --region us-east-1
 ```
 
-## 📋 O que este projeto faz?
+## 📋 What this project does
 
-Provisiona uma infraestrutura completa e production-ready de **Amazon EKS** (Kubernetes gerenciado) usando **Terraform**, incluindo:
+Provisions a complete and production-ready **Amazon EKS** (managed Kubernetes) infrastructure using **Terraform**, including:
 
-- ✅ VPC com subnets públicas e privadas em 2 AZs
-- ✅ Cluster EKS (Kubernetes 1.30)
-- ✅ Node Group com Spot Instances (70% mais barato)
-- ✅ NAT Gateway, Internet Gateway e Route Tables
-- ✅ IAM Roles e Security Groups configurados
-- ✅ Tags para descoberta automática de recursos
+- ✅ VPC with public and private subnets in 2 AZs
+- ✅ EKS Cluster (Kubernetes 1.30)
+- ✅ Node Group with Spot Instances (70% cheaper)
+- ✅ NAT Gateway, Internet Gateway, and Route Tables
+- ✅ Configured IAM Roles and Security Groups
+- ✅ Tags for automatic resource discovery
 
-## 💰 Custo Estimado
+## 💰 Estimated Cost
 
-### Uso sob demanda (Recomendado para estudos)
+### On-demand usage (Recommended for studies)
 ```
-20h/semana: ~$15.37/mês (94% de economia vs 24/7)
-10h/semana: ~$8.08/mês  (94% de economia vs 24/7)
-```
-
-### Uso contínuo 24/7
-```
-Spot Instances:    $126.70/mês
-On-Demand:         $138.23/mês
+20h/week: ~$15.37/month (94% savings vs 24/7)
+10h/week: ~$8.08/month  (94% savings vs 24/7)
 ```
 
-💡 **Estratégia**: Criar quando precisar (`terraform apply`), destruir quando terminar (`terraform destroy`)
+### Continuous usage 24/7
+```
+Spot Instances:    $126.70/month
+On-Demand:         $138.23/month
+```
 
-📊 [Ver análise detalhada de custos](CUSTOS.md)
+💡 **Strategy**: Create when needed (`terraform apply`), destroy when done (`terraform destroy`)
 
-## 🏗️ Arquitetura
+📊 [See detailed cost analysis](COSTS.md)
+
+## 🏗️ Architecture
 
 ```
 ┌─────────────────────────────────────────┐
@@ -74,196 +72,196 @@ On-Demand:         $138.23/mês
 └─────────────────────────────────────────┘
 ```
 
-**Recursos provisionados:** 25 recursos AWS
+**Provisioned resources:** 25 AWS resources
 
 ## 🚀 Quick Start
 
-### Pré-requisitos
+### Prerequisites
 
 ```bash
-# Instalar ferramentas
+# Install tools
 terraform --version  # >= 1.0
-aws configure        # Configurar credenciais
-kubectl version      # Cliente Kubernetes
+aws configure        # Configure credentials
+kubectl version      # Kubernetes client
 ```
 
-### 1. Clonar e Configurar
+### 1. Clone and Configure
 
 ```bash
-# Criar bucket S3 para estado do Terraform
-aws s3 mb s3://seu-bucket-terraform --region us-east-1
+# Create S3 bucket for Terraform state
+aws s3 mb s3://your-terraform-bucket --region us-east-1
 
-# Editar main.tf e alterar o bucket
+# Edit main.tf and change the bucket
 # backend "s3" {
-#   bucket = "seu-bucket-terraform"  # ← Altere aqui
+#   bucket = "your-terraform-bucket"  # ← Change here
 # }
 
-# Criar arquivo de configuração
+# Create configuration file
 cp terraform.tfvars.example terraform.tfvars
-# Edite terraform.tfvars com suas preferências
+# Edit terraform.tfvars with your preferences
 ```
 
-### 2. Provisionar Infraestrutura
+### 2. Provision Infrastructure
 
 ```bash
-# Inicializar Terraform
+# Initialize Terraform
 terraform init
 
-# Visualizar o que será criado
+# View what will be created
 terraform plan
 
-# Criar infraestrutura (~20-25 minutos)
+# Create infrastructure (~20-25 minutes)
 terraform apply
 ```
 
-### 3. Configurar kubectl
+### 3. Configure kubectl
 
 ```bash
-# Configurar acesso ao cluster
-aws eks update-kubeconfig --region us-east-1 --name SEU-PROJETO-eks
+# Configure cluster access
+aws eks update-kubeconfig --region us-east-1 --name YOUR-PROJECT-eks
 
-# Verificar nodes
+# Verify nodes
 kubectl get nodes
 ```
 
-### 4. Testar o Cluster
+### 4. Test the Cluster
 
 ```bash
-# Deploy de teste
+# Test deployment
 kubectl create deployment nginx --image=nginx
 kubectl expose deployment nginx --port=80 --type=LoadBalancer
 
-# Ver serviços
+# View services
 kubectl get svc
 
-# Acessar aplicação
+# Access application
 curl http://<EXTERNAL-IP>
 ```
 
-### 5. Destruir Infraestrutura (IMPORTANTE!)
+### 5. Destroy Infrastructure (IMPORTANT!)
 
 ```bash
-# Limpar recursos Kubernetes
+# Clean Kubernetes resources
 kubectl delete deployment nginx
 kubectl delete svc nginx
 
-# Destruir infraestrutura (~10-15 minutos)
+# Destroy infrastructure (~10-15 minutes)
 terraform destroy
 ```
 
-## 📁 Estrutura do Projeto
+## 📁 Project Structure
 
 ```
-projeto-eks/
-├── main.tf                    # Configuração principal
-├── variables.tf               # Variáveis de entrada
-├── outputs.tf                 # Outputs (endpoints, comandos)
-├── terraform.tfvars.example   # Exemplo de configuração
+eks-project/
+├── main.tf                    # Main configuration
+├── variables.tf               # Input variables
+├── outputs.tf                 # Outputs (endpoints, commands)
+├── terraform.tfvars.example   # Configuration template
 ├── modules/
 │   ├── network/               # VPC, Subnets, IGW, NAT, RT
 │   │   ├── main.tf
 │   │   ├── variables.tf
 │   │   └── outputs.tf
-│   └── eks/                   # Cluster EKS + Node Group
+│   └── eks/                   # EKS Cluster + Node Group
 │       ├── main.tf
 │       ├── variables.tf
 │       └── outputs.tf
-├── README.md                  # Este arquivo
-├── CUSTOS.md                  # Análise detalhada de custos
-├── CHANGELOG.md               # Histórico de mudanças
-└── HOWTO.md                   # Guia completo passo a passo
+├── README.md                  # This file
+├── COSTS.md                   # Detailed cost analysis
+├── CHANGELOG.md               # Change history
+└── HOWTO.md                   # Complete step-by-step guide
 ```
 
-## ⚙️ Variáveis Principais
+## ⚙️ Main Variables
 
-| Variável | Descrição | Padrão |
-|----------|-----------|--------|
-| `project_name` | Nome do projeto | `meu-projeto` |
-| `aws_region` | Região AWS | `us-east-1` |
-| `vpc_cidr` | CIDR da VPC | `10.0.0.0/16` |
-| `availability_zones` | AZs a usar | `["us-east-1a", "us-east-1b"]` |
-| `enable_nat_gateway` | Habilitar NAT | `true` |
-| `eks_cluster_version` | Versão Kubernetes | `1.30` |
-| `eks_node_capacity_type` | SPOT ou ON_DEMAND | `SPOT` |
-| `eks_node_instance_types` | Tipo de instância | `["t3.micro"]` |
-| `eks_node_desired_size` | Número de nodes | `2` |
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `project_name` | Project name | `rgtrovao-eks` |
+| `aws_region` | AWS Region | `us-east-1` |
+| `vpc_cidr` | VPC CIDR | `10.0.0.0/16` |
+| `availability_zones` | AZs to use | `["us-east-1a", "us-east-1b"]` |
+| `enable_nat_gateway` | Enable NAT | `true` |
+| `eks_cluster_version` | Kubernetes version | `1.30` |
+| `eks_node_capacity_type` | SPOT or ON_DEMAND | `SPOT` |
+| `eks_node_instance_types` | Instance type | `["t3.micro"]` |
+| `eks_node_desired_size` | Number of nodes | `2` |
 
-## 📤 Outputs Disponíveis
+## 📤 Available Outputs
 
-Após o deploy, você terá acesso a:
+After deployment, you'll have access to:
 
 ```bash
-terraform output cluster_name              # Nome do cluster
-terraform output cluster_endpoint          # URL da API
-terraform output configure_kubectl         # Comando para configurar kubectl
-terraform output vpc_id                    # ID da VPC
-terraform output private_subnet_ids        # IDs das subnets privadas
+terraform output cluster_name              # Cluster name
+terraform output cluster_endpoint          # API URL
+terraform output configure_kubectl         # kubectl configuration command
+terraform output vpc_id                    # VPC ID
+terraform output private_subnet_ids        # Private subnet IDs
 ```
 
-## 💡 Configurações Recomendadas
+## 💡 Recommended Configurations
 
-### Para Desenvolvimento/Estudos
+### For Development/Studies
 
 ```hcl
 # terraform.tfvars
-enable_nat_gateway = false              # Economiza $32/mês
-eks_node_capacity_type = "SPOT"         # Economiza 70%
+enable_nat_gateway = false              # Saves $32/month
+eks_node_capacity_type = "SPOT"         # Saves 70%
 eks_node_instance_types = ["t3.micro"]
 eks_node_desired_size = 2
 ```
 
-**Custo**: ~$8/mês (usando 10h/semana)
+**Cost**: ~$8/month (using 10h/week)
 
-### Para Produção
+### For Production
 
 ```hcl
 # terraform.tfvars
 enable_nat_gateway = true
-eks_node_capacity_type = "ON_DEMAND"    # Estabilidade
+eks_node_capacity_type = "ON_DEMAND"    # Stability
 eks_node_instance_types = ["t3.small"]
 eks_node_min_size = 3
 eks_node_max_size = 10
 eks_node_desired_size = 3
 ```
 
-**Custo**: ~$176/mês (24/7)
+**Cost**: ~$176/month (24/7)
 
-## 🎯 Casos de Uso
+## 🎯 Use Cases
 
-### ✅ Ideal para:
-- 📚 Aprendizado de Kubernetes e EKS
-- 🧪 Ambiente de testes e experimentação
-- 👨‍💻 Desenvolvimento de aplicações cloud-native
-- 🎓 Preparação para certificações (CKA, CKAD, AWS)
+### ✅ Ideal for:
+- 📚 Learning Kubernetes and EKS
+- 🧪 Testing and experimentation environment
+- 👨‍💻 Cloud-native application development
+- 🎓 Certification preparation (CKA, CKAD, AWS)
 - 💼 Proof of Concepts (POCs)
 
-### ⚠️ Considerar outras opções para:
-- 🏭 Produção 24/7 com alta disponibilidade
-- 💰 Orçamento muito restrito (<$50/mês)
-- 🔒 Ambientes com compliance rigoroso
+### ⚠️ Consider other options for:
+- 🏭 24/7 production with high availability
+- 💰 Very limited budget (<$50/month)
+- 🔒 Environments with strict compliance
 
-## 📚 Documentação Adicional
+## 📚 Additional Documentation
 
-- **[HOWTO.md](HOWTO.md)** - Guia passo a passo detalhado
-- **[CUSTOS.md](CUSTOS.md)** - Análise completa de custos por cenário
-- **[CHANGELOG.md](CHANGELOG.md)** - Histórico de otimizações
+- **[HOWTO.md](HOWTO.md)** - Detailed step-by-step guide
+- **[COSTS.md](COSTS.md)** - Complete cost analysis by scenario
+- **[CHANGELOG.md](CHANGELOG.md)** - Optimization history
 
-## 🔧 Comandos Úteis
+## 🔧 Useful Commands
 
 ```bash
-# Validar configuração
+# Validate configuration
 terraform validate
 
-# Formatar código
+# Format code
 terraform fmt -recursive
 
-# Ver estado atual
+# View current state
 terraform show
 
-# Atualizar apenas rede
+# Update only network
 terraform apply -target=module.network
 
-# Ver logs de custos
+# View cost logs
 aws ce get-cost-and-usage \
   --time-period Start=2026-01-01,End=2026-01-31 \
   --granularity MONTHLY \
@@ -272,71 +270,71 @@ aws ce get-cost-and-usage \
 
 ## 🐛 Troubleshooting
 
-### Erro: "Error creating EKS Cluster"
-- Verifique permissões IAM da sua conta AWS
-- Confirme limites de serviço (Service Quotas)
+### Error: "Error creating EKS Cluster"
+- Check your AWS account IAM permissions
+- Confirm service limits (Service Quotas)
 
-### kubectl não conecta
+### kubectl won't connect
 ```bash
-# Reconfigurar
-aws eks update-kubeconfig --region us-east-1 --name SEU-CLUSTER
+# Reconfigure
+aws eks update-kubeconfig --region us-east-1 --name YOUR-CLUSTER
 
-# Verificar credenciais
+# Check credentials
 aws sts get-caller-identity
 ```
 
-### Custo maior que esperado
-- Verifique se há recursos não destruídos: `aws resourcegroupstaggingapi get-resources`
-- Confirme que Load Balancers foram deletados
-- Revise NAT Gateway (maior custo variável)
+### Cost higher than expected
+- Check for undestroyed resources: `aws resourcegroupstaggingapi get-resources`
+- Confirm Load Balancers were deleted
+- Review NAT Gateway (highest variable cost)
 
-## 🔒 Segurança
+## 🔒 Security
 
-✅ **Implementado:**
-- Nodes em subnets privadas
-- Security groups restritivos
-- IAM roles com princípio do menor privilégio
-- Estado do Terraform em S3 com versionamento
+✅ **Implemented:**
+- Nodes in private subnets
+- Restrictive security groups
+- IAM roles with least privilege principle
+- Terraform state in S3 with versioning
 
-⚠️ **Recomendações adicionais para produção:**
-- Habilitar encryption de secrets no EKS
-- Implementar Pod Security Standards
-- Configurar Network Policies
-- Ativar audit logs do control plane
-- Usar AWS Secrets Manager para credenciais
+⚠️ **Additional recommendations for production:**
+- Enable EKS secrets encryption
+- Implement Pod Security Standards
+- Configure Network Policies
+- Enable control plane audit logs
+- Use AWS Secrets Manager for credentials
 
-## 🤝 Contribuindo
+## 🤝 Contributing
 
-Melhorias são bem-vindas! Para contribuir:
+Improvements are welcome! To contribute:
 
-1. Fork o projeto
-2. Crie uma branch (`git checkout -b feature/melhoria`)
-3. Commit suas mudanças (`git commit -m 'feat: adiciona xyz'`)
-4. Push para a branch (`git push origin feature/melhoria`)
-5. Abra um Pull Request
+1. Fork the project
+2. Create a branch (`git checkout -b feature/improvement`)
+3. Commit your changes (`git commit -m 'feat: add xyz'`)
+4. Push to the branch (`git push origin feature/improvement`)
+5. Open a Pull Request
 
-## 📄 Licença
+## 📄 License
 
-MIT License - veja arquivo LICENSE para detalhes
+MIT License - see LICENSE file for details
 
-## 🎓 Recursos Adicionais
+## 🎓 Additional Resources
 
-- [Documentação oficial do EKS](https://docs.aws.amazon.com/eks/)
+- [Official EKS Documentation](https://docs.aws.amazon.com/eks/)
 - [Terraform AWS Provider](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
 - [Kubernetes Documentation](https://kubernetes.io/docs/)
 - [EKS Best Practices](https://aws.github.io/aws-eks-best-practices/)
 - [Spot Instances Best Practices](https://aws.amazon.com/ec2/spot/getting-started/)
 
-## ⭐ Apoie o Projeto
+## ⭐ Support the Project
 
-Se este projeto te ajudou:
-- ⭐ Dê uma estrela no GitHub
-- 🔄 Compartilhe com outros desenvolvedores
-- 💬 Deixe feedback ou sugestões
-- 📝 Escreva um artigo sobre sua experiência
+If this project helped you:
+- ⭐ Star it on GitHub
+- 🔄 Share with other developers
+- 💬 Leave feedback or suggestions
+- 📝 Write about your experience
 
 ---
 
-**Criado com ❤️ para a comunidade de desenvolvedores**
+**Created with ❤️ for the developer community**
 
-*Questões? Abra uma issue no GitHub!*
+*Questions? Open an issue on GitHub!*

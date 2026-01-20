@@ -1,32 +1,32 @@
-# 📦 Resumo do Projeto EKS
+# 📦 EKS Project Summary
 
-> Documentação atualizada e concisa - Janeiro 2026
+> Updated and concise documentation - January 2026
 
-## 🎯 Visão Geral
+## 🎯 Overview
 
-Projeto Terraform completo para provisionar cluster **Amazon EKS** (Kubernetes 1.30) na AWS com foco em **economia** e **boas práticas**.
+Complete Terraform project to provision **Amazon EKS** cluster (Kubernetes 1.30) on AWS with focus on **cost savings** and **best practices**.
 
-### ✨ Destaques
+### ✨ Highlights
 
-- 💰 **Economia de até 94%** usando estratégia sob demanda
-- ☸️ **Kubernetes 1.30** atualizado
-- 🎯 **Spot Instances** por padrão (70% mais barato)
-- 📦 **2 módulos** consolidados (network + eks)
-- 📚 **Documentação completa** e prática
+- 💰 **Up to 94% savings** using on-demand strategy
+- ☸️ **Kubernetes 1.30** updated
+- 🎯 **Spot Instances** by default (70% cheaper)
+- 📦 **2 consolidated modules** (network + eks)
+- 📚 **Complete and practical documentation**
 
-## 📁 Estrutura de Arquivos
+## 📁 File Structure
 
 ```
-projeto-eks/
-├── 📘 README.md                  # Início rápido e visão geral
-├── 📗 HOWTO.md                   # Guia passo a passo completo
-├── 💰 CUSTOS.md                  # Análise detalhada de custos
-├── 📝 CHANGELOG.md               # Histórico de mudanças
-├── 🔧 main.tf                    # Configuração principal (66 linhas)
-├── 🔧 variables.tf               # Variáveis (87 linhas)
-├── 🔧 outputs.tf                 # Outputs úteis
-├── 📄 terraform.tfvars.example   # Template de configuração
-├── 🚫 .gitignore                 # Proteção de arquivos sensíveis
+eks-project/
+├── 📘 README.md                  # Quick start and overview
+├── 📗 HOWTO.md                   # Complete step-by-step guide
+├── 💰 COSTS.md                   # Detailed cost analysis
+├── 📝 CHANGELOG.md               # Change history
+├── 🔧 main.tf                    # Main configuration (66 lines)
+├── 🔧 variables.tf               # Variables (87 lines)
+├── 🔧 outputs.tf                 # Useful outputs
+├── 📄 terraform.tfvars.example   # Configuration template
+├── 🚫 .gitignore                 # Sensitive file protection
 └── 📦 modules/
     ├── network/                  # VPC, Subnets, IGW, NAT, RT
     │   ├── main.tf
@@ -38,34 +38,34 @@ projeto-eks/
         └── outputs.tf
 ```
 
-## 📚 Guia de Navegação
+## 📚 Navigation Guide
 
-### 🚀 Para Começar Rápido
-👉 **[README.md](README.md)** - Quick start, arquitetura, comandos básicos
+### 🚀 For Quick Start
+👉 **[README.md](README.md)** - Quick start, architecture, basic commands
 
-### 📖 Para Guia Completo
-👉 **[HOWTO.md](HOWTO.md)** - Tutorial passo a passo com troubleshooting
+### 📖 For Complete Guide
+👉 **[HOWTO.md](HOWTO.md)** - Step-by-step tutorial with troubleshooting
 
-### 💵 Para Entender Custos
-👉 **[CUSTOS.md](CUSTOS.md)** - Análise por cenário, dicas de economia
+### 💵 To Understand Costs
+👉 **[COSTS.md](COSTS.md)** - Scenario analysis, savings tips
 
-### 🔄 Para Ver Mudanças
-👉 **[CHANGELOG.md](CHANGELOG.md)** - Histórico de otimizações
+### 🔄 To See Changes
+👉 **[CHANGELOG.md](CHANGELOG.md)** - Optimization history
 
-## 💰 Custos Estimados
+## 💰 Estimated Costs
 
-### Por Padrão de Uso
+### By Usage Pattern
 
-| Uso | Horas/mês | Custo/mês | Economia |
+| Usage | Hours/month | Cost/month | Savings |
 |-----|-----------|-----------|----------|
-| **10h/semana** | 43h | $8.08 | 94% 🏆 |
-| **20h/semana** | 87h | $15.37 | 88% ⭐ |
+| **10h/week** | 43h | $8.08 | 94% 🏆 |
+| **20h/week** | 87h | $15.37 | 88% ⭐ |
 | **24/7 Spot** | 730h | $126.70 | 8% |
 | **24/7 On-Demand** | 730h | $138.23 | 0% |
 
-### Breakdown de Custos (24/7 Spot)
+### Cost Breakdown (24/7 Spot)
 
-| Componente | Custo/mês | % |
+| Component | Cost/month | % |
 |------------|-----------|---|
 | EKS Control Plane | $73.00 | 58% |
 | NAT Gateway + Data | $37.35 | 29% |
@@ -73,146 +73,146 @@ projeto-eks/
 | EBS + Transfer | $12.70 | 10% |
 | **Total** | **$126.70** | 100% |
 
-## 🏗️ Recursos Provisionados
+## 🏗️ Provisioned Resources
 
-**Total: 25 recursos AWS**
+**Total: 25 AWS resources**
 
-### Rede (13 recursos)
+### Network (13 resources)
 - 1 VPC
 - 1 Internet Gateway
 - 1 NAT Gateway + Elastic IP
-- 4 Subnets (2 públicas + 2 privadas)
-- 2 Route Tables + 5 associações/rotas
+- 4 Subnets (2 public + 2 private)
+- 2 Route Tables + 5 associations/routes
 
-### EKS (12 recursos)
-- 1 Cluster EKS
-- 1 Node Group (2 nodes t3.micro Spot)
-- 2 Security Groups + 1 regra
+### EKS (12 resources)
+- 1 EKS Cluster
+- 1 Node Group (2 t3.micro Spot nodes)
+- 2 Security Groups + 1 rule
 - 2 IAM Roles + 4 Policy Attachments
 
-## ⚡ Comandos Rápidos
+## ⚡ Quick Commands
 
 ```bash
-# Setup inicial
+# Initial setup
 terraform init
 terraform plan
 
-# Criar infraestrutura (~20-25 min)
+# Create infrastructure (~20-25 min)
 terraform apply
 
-# Configurar kubectl
+# Configure kubectl
 $(terraform output -raw configure_kubectl)
 
-# Verificar
+# Verify
 kubectl get nodes
 
-# Destruir (~10-15 min)
+# Destroy (~10-15 min)
 terraform destroy
 ```
 
-## 🎯 Casos de Uso
+## 🎯 Use Cases
 
-### ✅ Ideal para:
-- 📚 Aprendizado de Kubernetes/EKS
-- 🧪 Ambiente de testes
-- 👨‍💻 Desenvolvimento
-- 🎓 Certificações (CKA, CKAD, AWS)
-- 💼 POCs e demos
+### ✅ Ideal for:
+- 📚 Kubernetes/EKS learning
+- 🧪 Testing environment
+- 👨‍💻 Development
+- 🎓 Certifications (CKA, CKAD, AWS)
+- 💼 POCs and demos
 
-### ⚠️ Considerar alternativas para:
-- 🏭 Produção crítica 24/7
-- 💰 Orçamento < $50/mês
-- 🔒 Compliance rigoroso
+### ⚠️ Consider alternatives for:
+- 🏭 Critical production 24/7
+- 💰 Budget < $50/month
+- 🔒 Strict compliance
 
-## 📊 Métricas do Projeto
+## 📊 Project Metrics
 
-| Métrica | Valor |
+| Metric | Value |
 |---------|-------|
-| **Linhas de código** | ~600 linhas |
-| **Módulos** | 2 (network + eks) |
-| **Recursos AWS** | 25 recursos |
-| **Tempo de deploy** | ~20-25 minutos |
-| **Tempo de destroy** | ~10-15 minutos |
-| **Custo mínimo** | $8.08/mês (10h/sem) |
-| **Economia máxima** | 94% vs 24/7 |
+| **Lines of code** | ~600 lines |
+| **Modules** | 2 (network + eks) |
+| **AWS Resources** | 25 resources |
+| **Deploy time** | ~20-25 minutes |
+| **Destroy time** | ~10-15 minutes |
+| **Minimum cost** | $8.08/month (10h/week) |
+| **Maximum savings** | 94% vs 24/7 |
 
-## 🔧 Configuração Padrão
+## 🔧 Default Configuration
 
 ```hcl
-# Perfil: Estudos com Spot Instances
-project_name = "meu-projeto"
+# Profile: Studies with Spot Instances
+project_name = "rgtrovao-eks"
 aws_region = "us-east-1"
 vpc_cidr = "10.0.0.0/16"
 availability_zones = ["us-east-1a", "us-east-1b"]
 
-# Rede
-enable_nat_gateway = true  # $32/mês
+# Network
+enable_nat_gateway = true  # $32/month
 
 # EKS
 eks_cluster_version = "1.30"
-eks_node_capacity_type = "SPOT"  # 70% economia
+eks_node_capacity_type = "SPOT"  # 70% savings
 eks_node_instance_types = ["t3.micro"]
 eks_node_desired_size = 2
 ```
 
-## ✨ Mudanças vs Versão 1.0
+## ✨ Changes vs Version 1.0
 
-| Aspecto | Antes | Depois | Melhoria |
+| Aspect | Before | After | Improvement |
 |---------|-------|--------|----------|
-| **Módulos** | 5 | 2 | -60% complexidade |
-| **NAT Gateways** | 3 | 1 | -$64/mês |
+| **Modules** | 5 | 2 | -60% complexity |
+| **NAT Gateways** | 3 | 1 | -$64/month |
 | **Compute** | On-Demand | Spot | -70% |
-| **Kubernetes** | 1.28 | 1.30 | Atualizado |
-| **Subnets Database** | Sim | Não | Simplificado |
-| **Documentação** | Básica | Completa | +400% |
-| **Custo 24/7** | $181 | $127 | -30% |
+| **Kubernetes** | 1.28 | 1.30 | Updated |
+| **Database Subnets** | Yes | No | Simplified |
+| **Documentation** | Basic | Complete | +400% |
+| **Cost 24/7** | $181 | $127 | -30% |
 
-## 🎓 Recursos de Aprendizado
+## 🎓 Learning Resources
 
-### Documentação
+### Documentation
 - [AWS EKS Docs](https://docs.aws.amazon.com/eks/)
 - [Kubernetes Docs](https://kubernetes.io/docs/)
 - [Terraform AWS Provider](https://registry.terraform.io/providers/hashicorp/aws/)
 
-### Guias e Workshops
+### Guides and Workshops
 - [EKS Workshop](https://www.eksworkshop.com/)
 - [EKS Best Practices](https://aws.github.io/aws-eks-best-practices/)
 - [Terraform Learn](https://learn.hashicorp.com/terraform)
 
-## 🤝 Contribuindo
+## 🤝 Contributing
 
-Este projeto é mantido pela comunidade:
+This project is community-maintained:
 
-1. 🍴 Fork o projeto
-2. 🌿 Crie uma branch (`feature/melhoria`)
-3. 💬 Commit suas mudanças
-4. 📤 Push e abra um PR
-5. ⭐ Deixe uma estrela!
+1. 🍴 Fork the project
+2. 🌿 Create a branch (`feature/improvement`)
+3. 💬 Commit your changes
+4. 📤 Push and open a PR
+5. ⭐ Leave a star!
 
-## 📞 Suporte
+## 📞 Support
 
-- 🐛 **Issues**: Problemas e bugs
-- 💡 **Discussions**: Perguntas e ideias
-- 📧 **Email**: Contato direto
+- 🐛 **Issues**: Problems and bugs
+- 💡 **Discussions**: Questions and ideas
+- 📧 **Email**: Direct contact
 
-## 📄 Licença
+## 📄 License
 
-MIT License - Use livremente!
+MIT License - Use freely!
 
 ---
 
 ## 🎉 Quick Links
 
-| 📖 Documentação | 🔗 Link |
+| 📖 Documentation | 🔗 Link |
 |----------------|---------|
-| Início Rápido | [README.md](README.md) |
-| Guia Completo | [HOWTO.md](HOWTO.md) |
-| Análise de Custos | [CUSTOS.md](CUSTOS.md) |
-| Histórico | [CHANGELOG.md](CHANGELOG.md) |
-| Exemplo Config | [terraform.tfvars.example](terraform.tfvars.example) |
+| Quick Start | [README.md](README.md) |
+| Complete Guide | [HOWTO.md](HOWTO.md) |
+| Cost Analysis | [COSTS.md](COSTS.md) |
+| History | [CHANGELOG.md](CHANGELOG.md) |
+| Config Example | [terraform.tfvars.example](terraform.tfvars.example) |
 
 ---
 
-**Criado com ❤️ para a comunidade de desenvolvedores**
+**Created with ❤️ for the developer community**
 
-*Última atualização: Janeiro 2026*
+*Last updated: January 2026*

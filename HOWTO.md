@@ -1,81 +1,81 @@
-# 🚀 Como Provisionar um Cluster EKS na AWS com Terraform
+# 🚀 How to Provision an EKS Cluster on AWS with Terraform
 
-> **Guia Completo para Estudantes de Kubernetes e AWS**
+> **Complete Guide for Kubernetes and AWS Students**
 
 ---
 
-## ⚠️ ESTRATÉGIA DE CUSTO PARA ESTUDOS
+## ⚠️ COST STRATEGY FOR STUDIES
 
-### 🎯 Use sob demanda, destrua quando não estiver usando!
+### 🎯 Use on-demand, destroy when not in use!
 
-Este guia foi criado para quem está **estudando** Kubernetes e quer **economia máxima**:
+This guide was created for those who are **studying** Kubernetes and want **maximum savings**:
 
-✅ **Criar cluster**: `terraform apply` (~20 minutos)  
-✅ **Estudar**: Quanto tempo precisar  
-✅ **Destruir**: `terraform destroy` (~15 minutos)  
+✅ **Create cluster**: `terraform apply` (~20 minutes)  
+✅ **Study**: As long as you need  
+✅ **Destroy**: `terraform destroy` (~15 minutes)  
 
-### 💰 Estimativa de Custo (20h/semana)
+### 💰 Cost Estimate (20h/week)
 
 ```
 ┌────────────────────────────────────────┐
-│ Uso Semanal:    20 horas              │
-│ Uso Mensal:     ~86.6 horas           │
-│ Custo Mensal:   ~$15.37               │
-│ Custo por Hora: $0.18                 │
+│ Weekly Usage:   20 hours              │
+│ Monthly Usage:  ~86.6 hours           │
+│ Monthly Cost:   ~$15.37               │
+│ Cost per Hour:  $0.18                 │
 │                                        │
-│ 🎉 94% mais barato que manter 24/7!   │
+│ 🎉 94% cheaper than keeping it 24/7!  │
 └────────────────────────────────────────┘
 ```
 
 **Breakdown:**
-- EKS Control Plane: $8.66/mês
-- 2x EC2 t3.micro Spot: $0.43/mês
-- NAT Gateway: $3.90/mês
-- Storage + Transfer: $2.38/mês
+- EKS Control Plane: $8.66/month
+- 2x EC2 t3.micro Spot: $0.43/month
+- NAT Gateway: $3.90/month
+- Storage + Transfer: $2.38/month
 
-💡 **Comparação**: Cluster 24/7 = ~$127/mês | Sob demanda (20h/sem) = **$15.37/mês**
-
----
-
-## 🎯 O que você vai aprender
-
-Ao final deste guia, você terá:
-
-✅ Cluster EKS funcionando (Kubernetes 1.30)  
-✅ Infraestrutura de rede completa (VPC, Subnets, NAT, IGW)  
-✅ Conhecimento prático de Terraform  
-✅ 2 worker nodes configurados  
-✅ kubectl configurado e pronto  
-✅ Economia de até 94% nos custos  
+💡 **Comparison**: Cluster 24/7 = ~$127/month | On-demand (20h/week) = **$15.37/month**
 
 ---
 
-## 📋 Pré-requisitos
+## 🎯 What you'll learn
 
-### 1. Ferramentas Necessárias
+By the end of this guide, you'll have:
+
+✅ Working EKS cluster (Kubernetes 1.30)  
+✅ Complete network infrastructure (VPC, Subnets, NAT, IGW)  
+✅ Practical Terraform knowledge  
+✅ 2 configured worker nodes  
+✅ kubectl configured and ready  
+✅ Up to 94% savings on costs  
+
+---
+
+## 📋 Prerequisites
+
+### 1. Required Tools
 
 ```bash
 # Terraform >= 1.0
 brew install terraform      # macOS
-# ou
+# or
 choco install terraform     # Windows
-# ou
+# or
 sudo apt install terraform  # Linux
 
 # AWS CLI
 brew install awscli         # macOS
-pip install awscli         # Qualquer SO
+pip install awscli         # Any OS
 
 # kubectl
 brew install kubectl        # macOS
 choco install kubernetes-cli # Windows
 ```
 
-### 2. Conta AWS
+### 2. AWS Account
 
-- Criar conta AWS (Free Tier disponível)
-- Obter Access Key e Secret Key
-- Configurar credenciais:
+- Create AWS account (Free Tier available)
+- Get Access Key and Secret Key
+- Configure credentials:
 
 ```bash
 aws configure
@@ -85,17 +85,17 @@ aws configure
 # Default output format: json
 ```
 
-### 3. Verificar Permissões
+### 3. Verify Permissions
 
-Sua conta AWS precisa de permissões para:
-- EC2 (criar VPC, subnets, security groups)
-- EKS (criar cluster e node groups)
-- IAM (criar roles e policies)
-- S3 (armazenar estado do Terraform)
+Your AWS account needs permissions for:
+- EC2 (create VPC, subnets, security groups)
+- EKS (create cluster and node groups)
+- IAM (create roles and policies)
+- S3 (store Terraform state)
 
 ---
 
-## 🏗️ Arquitetura Completa
+## 🏗️ Complete Architecture
 
 ```
 ┌─────────────────────────────────────────────┐
@@ -127,39 +127,39 @@ Sua conta AWS precisa de permissões para:
 └─────────────────────────────────────────────┘
 ```
 
-**Total de recursos AWS:** 25 recursos
+**Total AWS resources:** 25 resources
 
 ---
 
-## 🚀 Passo a Passo - Instalação
+## 🚀 Step by Step - Installation
 
-### Passo 1: Obter o Código
+### Step 1: Get the Code
 
 ```bash
-# Opção A: Clonar repositório (se disponível)
-git clone https://github.com/seu-usuario/projeto-eks
-cd projeto-eks
+# Option A: Clone repository (if available)
+git clone https://github.com/your-username/eks-project
+cd eks-project
 
-# Opção B: Download direto ou criar manualmente
-mkdir projeto-eks && cd projeto-eks
+# Option B: Direct download or create manually
+mkdir eks-project && cd eks-project
 ```
 
-### Passo 2: Backend S3
+### Step 2: S3 Backend
 
-O Terraform precisa de um local para armazenar o estado da infraestrutura:
+Terraform needs a place to store infrastructure state:
 
 ```bash
-# Criar bucket S3 (nome deve ser único globalmente)
-aws s3 mb s3://seu-nome-unico-terraform-state --region us-east-1
+# Create S3 bucket (if it doesn't exist)
+aws s3 mb s3://rgtrovao-terraform-bucket --region us-east-1
 
-# Habilitar versionamento (backup de segurança)
+# Enable versioning (security backup)
 aws s3api put-bucket-versioning \
-  --bucket seu-nome-unico-terraform-state \
+  --bucket rgtrovao-terraform-bucket \
   --versioning-configuration Status=Enabled
 
-# Habilitar encryption
+# Enable encryption
 aws s3api put-bucket-encryption \
-  --bucket seu-nome-unico-terraform-state \
+  --bucket rgtrovao-terraform-bucket \
   --server-side-encryption-configuration '{
     "Rules": [{
       "ApplyServerSideEncryptionByDefault": {
@@ -169,118 +169,118 @@ aws s3api put-bucket-encryption \
   }'
 ```
 
-### Passo 3: Configurar Backend
+### Step 3: Configure Backend
 
-Edite o arquivo `main.tf` e altere o nome do bucket:
+The S3 backend is already configured in `main.tf`:
 
 ```hcl
 backend "s3" {
-  bucket = "seu-nome-unico-terraform-state"  # ← ALTERE AQUI
+  bucket = "rgtrovao-terraform-bucket"
   key    = "eks/terraform.tfstate"
   region = "us-east-1"
 }
 ```
 
-### Passo 4: Configurar Variáveis
+### Step 4: Configure Variables
 
-Copie o arquivo de exemplo:
+Copy the example file:
 
 ```bash
 cp terraform.tfvars.example terraform.tfvars
 ```
 
-Edite `terraform.tfvars`:
+Edit `terraform.tfvars`:
 
 ```hcl
-# Identificação
-project_name = "meu-projeto"     # ← Altere
+# Identification
+project_name = "rgtrovao-eks"
 environment  = "dev"
 
-# Rede
+# Network
 aws_region = "us-east-1"
 vpc_cidr = "10.0.0.0/16"
 availability_zones = ["us-east-1a", "us-east-1b"]
 
-# Economia: false para dev (economiza $32/mês)
+# Savings: false for dev (saves $32/month)
 enable_nat_gateway = true
 
-# EKS - Spot economiza 70%!
+# EKS - Spot saves 70%!
 eks_cluster_version = "1.30"
-eks_node_capacity_type = "SPOT"              # SPOT ou ON_DEMAND
+eks_node_capacity_type = "SPOT"              # SPOT or ON_DEMAND
 eks_node_instance_types = ["t3.micro"]
 eks_node_desired_size = 2
 eks_node_min_size = 2
 eks_node_max_size = 2
 eks_node_disk_size = 20
 
-# Tags opcionais
+# Optional tags
 tags = {
-  Owner = "seu-nome"
-  Curso = "kubernetes-na-pratica"
+  Owner = "your-name"
+  Course = "kubernetes-in-practice"
 }
 ```
 
-### Passo 5: Inicializar Terraform
+### Step 5: Initialize Terraform
 
 ```bash
-# Inicializar (download de providers)
+# Initialize (download providers)
 terraform init
 
-# Deve mostrar: "Terraform has been successfully initialized!"
+# Should show: "Terraform has been successfully initialized!"
 ```
 
-### Passo 6: Validar Configuração
+### Step 6: Validate Configuration
 
 ```bash
-# Validar sintaxe
+# Validate syntax
 terraform validate
 
-# Formatar código
+# Format code
 terraform fmt -recursive
 ```
 
-### Passo 7: Ver o Plano
+### Step 7: View the Plan
 
 ```bash
-# Ver o que será criado (não cria nada ainda)
+# See what will be created (doesn't create anything yet)
 terraform plan
 
-# Você verá: "Plan: 25 to add, 0 to change, 0 to destroy"
+# You'll see: "Plan: 25 to add, 0 to change, 0 to destroy"
 ```
 
-### Passo 8: Criar Infraestrutura! 🎉
+### Step 8: Create Infrastructure! 🎉
 
 ```bash
-# Criar tudo
+# Create everything
 terraform apply
 
-# Digite 'yes' quando solicitado
-# Aguarde ~20-25 minutos ☕
+# Type 'yes' when prompted
+# Wait ~20-25 minutes ☕
 
-# Progresso:
-# ✓ VPC e rede (~3 min)
+# Progress:
+# ✓ VPC and network (~3 min)
 # ✓ EKS Control Plane (~10-12 min)
 # ✓ Node Group (~5-7 min)
-# ✓ Configurações finais (~2 min)
+# ✓ Final configurations (~2 min)
 ```
 
 ---
 
-## ⚙️ Configurar kubectl
+## ⚙️ Configure kubectl
 
-Após a criação, configure o acesso:
+After creation, configure access:
 
 ```bash
-# Obter comando de configuração
+# Get configuration command
 terraform output configure_kubectl
 
-# Ou execute diretamente:
-aws eks update-kubeconfig --region us-east-1 --name meu-projeto-eks
+# Or execute directly:
+aws eks update-kubeconfig --region us-east-1 --name rgtrovao-eks-eks
 
-# Verificar conexão
+# Verify connection
 kubectl get nodes
 
-# Deve mostrar 2 nodes:
+# Should show 2 nodes:
 # NAME                         STATUS   ROLES    AGE   VERSION
 # ip-10-0-10-xx.ec2.internal  Ready    <none>   3m    v1.30.x
 # ip-10-0-11-xx.ec2.internal  Ready    <none>   3m    v1.30.x
@@ -288,32 +288,32 @@ kubectl get nodes
 
 ---
 
-## 🧪 Testar o Cluster
+## 🧪 Test the Cluster
 
-### Deploy de Aplicação Simples
+### Simple Application Deployment
 
 ```bash
-# Deploy do NGINX
+# Deploy NGINX
 kubectl create deployment nginx --image=nginx:latest
 
-# Verificar pod
+# Check pod
 kubectl get pods
 
-# Expor com Load Balancer
+# Expose with Load Balancer
 kubectl expose deployment nginx --port=80 --type=LoadBalancer
 
-# Ver serviços (aguarde EXTERNAL-IP aparecer, ~2-3 min)
+# View services (wait for EXTERNAL-IP to appear, ~2-3 min)
 kubectl get svc nginx --watch
 
-# Testar acesso
+# Test access
 curl http://<EXTERNAL-IP>
-# Deve retornar: "Welcome to nginx!"
+# Should return: "Welcome to nginx!"
 ```
 
-### Deploy com Manifesto
+### Deploy with Manifest
 
 ```bash
-# Criar arquivo deployment.yaml
+# Create deployment.yaml file
 cat <<EOF > deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -349,83 +349,83 @@ spec:
       targetPort: 8080
 EOF
 
-# Aplicar
+# Apply
 kubectl apply -f deployment.yaml
 
-# Ver status
+# View status
 kubectl get all
 
-# Testar
+# Test
 curl http://$(kubectl get svc hello-k8s -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
 ```
 
 ---
 
-## 🗑️ Destruir Infraestrutura
+## 🗑️ Destroy Infrastructure
 
-**MUITO IMPORTANTE**: Sempre destrua quando terminar!
+**VERY IMPORTANT**: Always destroy when finished!
 
-### Passo 1: Limpar Recursos Kubernetes
+### Step 1: Clean Kubernetes Resources
 
 ```bash
-# Deletar deployments
+# Delete deployments
 kubectl delete deployment nginx hello-k8s
 
-# Deletar serviços (IMPORTANTE: remove Load Balancers)
+# Delete services (IMPORTANT: removes Load Balancers)
 kubectl delete svc nginx hello-k8s
 
-# Verificar se Load Balancers foram removidos
+# Verify Load Balancers were removed
 kubectl get svc --all-namespaces
 
-# Aguardar 2-3 minutos para AWS processar
+# Wait 2-3 minutes for AWS to process
 ```
 
-### Passo 2: Destruir com Terraform
+### Step 2: Destroy with Terraform
 
 ```bash
-# Destruir tudo
+# Destroy everything
 terraform destroy
 
-# Digite 'yes' quando solicitado
-# Aguarde ~10-15 minutos
+# Type 'yes' when prompted
+# Wait ~10-15 minutes
 
-# Progresso:
+# Progress:
 # ✓ Node Group (~5 min)
 # ✓ EKS Cluster (~5 min)
-# ✓ Rede e VPC (~3 min)
+# ✓ Network and VPC (~3 min)
 ```
 
-### Passo 3: Verificar Limpeza
+### Step 3: Verify Cleanup
 
 ```bash
-# Verificar no console AWS ou CLI
+# Verify in AWS console or CLI
 aws eks list-clusters --region us-east-1
 
-# Deve retornar vazio: {"clusters": []}
+# Should return empty: {"clusters": []}
 
-# Verificar VPCs
-aws ec2 describe-vpcs --filters "Name=tag:Project,Values=meu-projeto" --region us-east-1
+# Check VPCs
+aws ec2 describe-vpcs --filters "Name=tag:Project,Values=rgtrovao-eks" --region us-east-1
 
-# Deve retornar vazio
+# Should return empty
 ```
 
 ---
 
-## 💡 Dicas e Truques
+## 💡 Tips and Tricks
 
-### 1. Scripts de Automação
+### 1. Automation Scripts
 
-Crie scripts para facilitar:
+Create scripts to make it easier:
 
 **`start.sh`:**
 ```bash
 #!/bin/bash
 set -e
-echo "🚀 Criando cluster EKS..."
+echo "🚀 Creating EKS cluster..."
 terraform apply -auto-approve
-echo "⚙️ Configurando kubectl..."
+echo "⚙️ Configuring kubectl..."
 $(terraform output -raw configure_kubectl)
-echo "✅ Pronto! Verificando nodes..."
+echo "✅ Ready! Checking nodes..."
 kubectl get nodes
 ```
 
@@ -433,212 +433,212 @@ kubectl get nodes
 ```bash
 #!/bin/bash
 set -e
-echo "🧹 Limpando recursos Kubernetes..."
+echo "🧹 Cleaning Kubernetes resources..."
 kubectl delete deployments --all
 kubectl delete services --all-namespaces -l "app"
 sleep 60
-echo "🗑️ Destruindo infraestrutura..."
+echo "🗑️ Destroying infrastructure..."
 terraform destroy -auto-approve
-echo "✅ Infraestrutura destruída!"
+echo "✅ Infrastructure destroyed!"
 ```
 
-### 2. Economizar Mais
+### 2. Save More
 
 ```hcl
-# Para estudos sem acesso externo aos nodes:
-enable_nat_gateway = false  # Economiza $32/mês
+# For studies without external access to nodes:
+enable_nat_gateway = false  # Saves $32/month
 
-# Usar apenas quando precisar de:
-# - Pull de imagens privadas
-# - Acesso à internet dos pods
-# - Integração com APIs externas
+# Use only when you need:
+# - Pull private images
+# - Internet access from pods
+# - Integration with external APIs
 ```
 
-### 3. Monitorar Custos
+### 3. Monitor Costs
 
 ```bash
-# Ver custos no AWS CLI
+# View costs in AWS CLI
 aws ce get-cost-and-usage \
   --time-period Start=2026-01-01,End=2026-01-31 \
   --granularity DAILY \
   --metrics BlendedCost \
   --group-by Type=TAG,Key=Project
 
-# Configurar alerta de custo no console AWS:
+# Set up cost alert in AWS console:
 # Billing → Budgets → Create budget
-# - Tipo: Cost budget
-# - Valor: $20/mês
-# - Alerta: 80% ($16)
+# - Type: Cost budget
+# - Amount: $20/month
+# - Alert: 80% ($16)
 ```
 
-### 4. Persistir Dados Entre Destruições
+### 4. Persist Data Between Destructions
 
-Use S3 para dados importantes:
+Use S3 for important data:
 
 ```bash
-# Salvar configs
+# Save configs
 kubectl get configmaps -o yaml > backup-configs.yaml
 
-# Fazer backup em S3
-aws s3 cp backup-configs.yaml s3://seu-bucket/backups/
+# Backup to S3
+aws s3 cp backup-configs.yaml s3://your-bucket/backups/
 
-# Restaurar depois
-aws s3 cp s3://seu-bucket/backups/backup-configs.yaml .
+# Restore later
+aws s3 cp s3://your-bucket/backups/backup-configs.yaml .
 kubectl apply -f backup-configs.yaml
 ```
 
 ---
 
-## 📊 Comparativo de Cenários
+## 📊 Scenario Comparison
 
-| Cenário | Horas/mês | Custo | Melhor Para |
+| Scenario | Hours/month | Cost | Best For |
 |---------|-----------|-------|-------------|
-| **24/7 On-Demand** | 730h | $138/mês | Produção |
-| **24/7 Spot** | 730h | $127/mês | Staging 24/7 |
-| **20h/semana (Destroy)** | 87h | **$15/mês** | **Estudos** ⭐ |
-| **10h/semana (Destroy)** | 43h | **$8/mês** | **Estudos** ⭐⭐ |
+| **24/7 On-Demand** | 730h | $138/month | Production |
+| **24/7 Spot** | 730h | $127/month | Staging 24/7 |
+| **20h/week (Destroy)** | 87h | **$15/month** | **Studies** ⭐ |
+| **10h/week (Destroy)** | 43h | **$8/month** | **Studies** ⭐⭐ |
 
 ---
 
 ## 🐛 Troubleshooting
 
-### Erro: "Error creating EKS Cluster"
+### Error: "Error creating EKS Cluster"
 
-**Causa**: Permissões IAM insuficientes  
-**Solução**:
+**Cause**: Insufficient IAM permissions  
+**Solution**:
 ```bash
-# Verificar permissões
+# Check permissions
 aws iam get-user
 
-# Adicionar policies necessárias no IAM Console
+# Add necessary policies in IAM Console
 ```
 
-### Erro: "Error creating Node Group"
+### Error: "Error creating Node Group"
 
-**Causa**: Limites de Service Quotas  
-**Solução**:
+**Cause**: Service Quotas limits  
+**Solution**:
 ```bash
-# Ver limites
+# View limits
 aws service-quotas list-service-quotas \
   --service-code eks \
   --region us-east-1
 
-# Solicitar aumento no console AWS
+# Request increase in AWS console
 ```
 
-### kubectl não conecta
+### kubectl won't connect
 
 ```bash
-# Reconfigurar
+# Reconfigure
 aws eks update-kubeconfig --region us-east-1 --name CLUSTER-NAME --profile default
 
-# Verificar credenciais
+# Check credentials
 aws sts get-caller-identity
 
-# Testar acesso
+# Test access
 kubectl cluster-info
 ```
 
-### Custo maior que esperado
+### Cost higher than expected
 
 ```bash
-# Verificar recursos não destruídos
+# Check undestroyed resources
 aws resourcegroupstaggingapi get-resources \
-  --tag-filters Key=Project,Values=meu-projeto
+  --tag-filters Key=Project,Values=rgtrovao-eks
 
-# Deletar Load Balancers órfãos
+# Delete orphaned Load Balancers
 aws elb describe-load-balancers --region us-east-1
 
-# Verificar NAT Gateway
+# Check NAT Gateway
 aws ec2 describe-nat-gateways --region us-east-1
 ```
 
 ---
 
-## 🎓 Próximos Passos
+## 🎓 Next Steps
 
-Agora que você tem um cluster funcionando:
+Now that you have a working cluster:
 
-### 1. Kubernetes Básico
+### 1. Kubernetes Basics
 - Deployments, Services, ConfigMaps
-- Namespaces e Resource Quotas
+- Namespaces and Resource Quotas
 - Persistent Volumes
 
-### 2. Ferramentas Essenciais
-- **Helm**: Gerenciador de pacotes K8s
-- **Ingress Controller**: NGINX ou ALB
-- **Cert-Manager**: Certificados SSL automáticos
+### 2. Essential Tools
+- **Helm**: K8s package manager
+- **Ingress Controller**: NGINX or ALB
+- **Cert-Manager**: Automatic SSL certificates
 
-### 3. Observabilidade
-- **Prometheus + Grafana**: Métricas
-- **ELK Stack**: Logs centralizados
-- **Jaeger**: Tracing distribuído
+### 3. Observability
+- **Prometheus + Grafana**: Metrics
+- **ELK Stack**: Centralized logs
+- **Jaeger**: Distributed tracing
 
 ### 4. CI/CD
-- **GitHub Actions**: Pipeline automatizado
-- **ArgoCD**: GitOps para K8s
-- **Flux**: Alternativa ao ArgoCD
+- **GitHub Actions**: Automated pipeline
+- **ArgoCD**: GitOps for K8s
+- **Flux**: ArgoCD alternative
 
 ### 5. Service Mesh
-- **Istio**: Traffic management avançado
-- **Linkerd**: Service mesh leve
+- **Istio**: Advanced traffic management
+- **Linkerd**: Lightweight service mesh
 
 ---
 
-## 📚 Recursos de Aprendizado
+## 📚 Learning Resources
 
-### Cursos Gratuitos
+### Free Courses
 - [Kubernetes Basics (Kubernetes.io)](https://kubernetes.io/docs/tutorials/kubernetes-basics/)
 - [EKS Workshop](https://www.eksworkshop.com/)
 - [Terraform AWS Tutorial](https://learn.hashicorp.com/collections/terraform/aws-get-started)
 
-### Certificações
+### Certifications
 - **CKA**: Certified Kubernetes Administrator
 - **CKAD**: Certified Kubernetes Application Developer
 - **AWS Certified Solutions Architect**
 
-### Comunidades
+### Communities
 - [Kubernetes Slack](https://slack.k8s.io/)
 - [Reddit r/kubernetes](https://reddit.com/r/kubernetes)
 - [Stack Overflow](https://stackoverflow.com/questions/tagged/kubernetes)
 
 ---
 
-## 🤝 Compartilhe Este Guia
+## 🤝 Share This Guide
 
-Ajude outros estudantes:
+Help other students:
 
-- 👍 LinkedIn: Compartilhe com sua rede
-- 🐦 Twitter: Tweet com #Kubernetes #AWS #EKS
-- 📝 Blog: Escreva sobre sua experiência
-- ⭐ GitHub: Star este repositório
-
----
-
-## 📞 Suporte
-
-- 🐛 Issues: Abra um issue no GitHub
-- 💬 Discussões: Use a aba Discussions
-- 📧 Email: [seu-email@example.com]
+- 👍 LinkedIn: Share with your network
+- 🐦 Twitter: Tweet with #Kubernetes #AWS #EKS
+- 📝 Blog: Write about your experience
+- ⭐ GitHub: Star this repository
 
 ---
 
-## ✨ Conclusão
+## 📞 Support
 
-Parabéns! 🎉 Você agora sabe:
-
-✅ Provisionar infraestrutura AWS com Terraform  
-✅ Criar e gerenciar clusters EKS  
-✅ Otimizar custos usando Spot Instances  
-✅ Deploy de aplicações em Kubernetes  
-✅ Destruir recursos para economizar  
-
-**Custo para estudar Kubernetes**: $8-15/mês (vs $127 24/7)  
-**Economia**: 88-94%  
-**Conhecimento**: Inestimável 🚀  
+- 🐛 Issues: Open an issue on GitHub
+- 💬 Discussions: Use the Discussions tab
+- 📧 Email: [your-email@example.com]
 
 ---
 
-**Bons estudos e bora codar! 💻**
+## ✨ Conclusion
 
-*Criado com ❤️ para a comunidade de desenvolvedores*
+Congratulations! 🎉 You now know how to:
+
+✅ Provision AWS infrastructure with Terraform  
+✅ Create and manage EKS clusters  
+✅ Optimize costs using Spot Instances  
+✅ Deploy applications in Kubernetes  
+✅ Destroy resources to save money  
+
+**Cost to study Kubernetes**: $8-15/month (vs $127 24/7)  
+**Savings**: 88-94%  
+**Knowledge**: Priceless 🚀  
+
+---
+
+**Happy learning and let's code! 💻**
+
+*Created with ❤️ for the developer community*

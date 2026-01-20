@@ -1,76 +1,76 @@
 variable "cluster_name" {
-  description = "Nome do cluster EKS"
+  description = "EKS cluster name"
   type        = string
 }
 
 variable "cluster_version" {
-  description = "Versão do Kubernetes"
+  description = "Kubernetes version"
   type        = string
   default     = "1.30"
 }
 
 variable "vpc_id" {
-  description = "ID da VPC"
+  description = "VPC ID"
   type        = string
 }
 
 variable "private_subnet_ids" {
-  description = "IDs das subnets privadas para os nodes"
+  description = "Private subnet IDs for nodes"
   type        = list(string)
 }
 
 variable "public_subnet_ids" {
-  description = "IDs das subnets públicas para o control plane"
+  description = "Public subnet IDs for control plane"
   type        = list(string)
 }
 
 variable "node_group_name" {
-  description = "Nome do node group"
+  description = "Node group name"
   type        = string
 }
 
 variable "desired_size" {
-  description = "Número desejado de nodes"
+  description = "Desired number of nodes"
   type        = number
   default     = 2
 }
 
 variable "min_size" {
-  description = "Número mínimo de nodes"
+  description = "Minimum number of nodes"
   type        = number
   default     = 2
 }
 
 variable "max_size" {
-  description = "Número máximo de nodes"
+  description = "Maximum number of nodes"
   type        = number
   default     = 2
 }
 
 variable "instance_types" {
-  description = "Tipos de instância para os nodes"
+  description = "Instance types for nodes"
   type        = list(string)
   default     = ["t3.micro"]
 }
 
 variable "disk_size" {
-  description = "Tamanho do disco em GB"
+  description = "Disk size in GB"
   type        = number
   default     = 20
 }
 
 variable "capacity_type" {
-  description = "Tipo de capacidade (ON_DEMAND ou SPOT)"
+  description = "Capacity type (ON_DEMAND or SPOT)"
   type        = string
   default     = "SPOT"
   validation {
     condition     = contains(["ON_DEMAND", "SPOT"], var.capacity_type)
-    error_message = "capacity_type deve ser ON_DEMAND ou SPOT"
+    error_message = "capacity_type must be ON_DEMAND or SPOT"
   }
 }
 
 variable "tags" {
-  description = "Tags para aplicar aos recursos"
+  description = "Tags to apply to resources"
   type        = map(string)
   default     = {}
 }

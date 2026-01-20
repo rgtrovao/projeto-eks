@@ -1,4 +1,4 @@
-# IAM Role para o EKS Cluster
+# IAM Role for EKS Cluster
 resource "aws_iam_role" "cluster" {
   name = "${var.cluster_name}-cluster-role"
 
@@ -21,7 +21,7 @@ resource "aws_iam_role_policy_attachment" "cluster_policy" {
   role       = aws_iam_role.cluster.name
 }
 
-# Security Group para o Control Plane do EKS
+# Security Group for EKS Control Plane
 resource "aws_security_group" "cluster" {
   name_prefix = "${var.cluster_name}-cluster-"
   description = "Security group for EKS cluster control plane"
@@ -45,7 +45,7 @@ resource "aws_security_group_rule" "cluster_egress" {
   cidr_blocks       = [data.aws_vpc.selected.cidr_block]
 }
 
-# Data source para obter informações da VPC
+# Data source to get VPC information
 data "aws_vpc" "selected" {
   id = var.vpc_id
 }
@@ -71,7 +71,7 @@ resource "aws_eks_cluster" "main" {
   tags = var.tags
 }
 
-# IAM Role para os Worker Nodes
+# IAM Role for Worker Nodes
 resource "aws_iam_role" "node" {
   name = "${var.cluster_name}-node-role"
 
