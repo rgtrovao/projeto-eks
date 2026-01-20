@@ -47,33 +47,3 @@ output "nat_gateway_ids" {
   description = "IDs dos NAT Gateways (se habilitados)"
   value       = var.enable_nat_gateway ? module.subnets.nat_gateway_ids : []
 }
-
-output "eks_cluster_name" {
-  description = "Nome do cluster EKS"
-  value       = module.eks.cluster_name
-}
-
-output "eks_cluster_endpoint" {
-  description = "Endpoint da API do cluster EKS"
-  value       = module.eks.cluster_endpoint
-}
-
-output "eks_cluster_ca_certificate" {
-  description = "Certificado CA do cluster EKS (base64)"
-  value       = module.eks.cluster_ca_certificate
-}
-
-output "eks_node_group_name" {
-  description = "Nome do node group EKS"
-  value       = module.eks.node_group_name
-}
-
-output "eks_configure_kubectl" {
-  description = "Comando para configurar o kubectl e acessar o cluster EKS"
-  value       = "aws eks update-kubeconfig --region ${var.aws_region} --name ${module.eks.cluster_name}"
-}
-
-output "eks_test_connection" {
-  description = "Comando para testar a conexão com o cluster EKS"
-  value       = "kubectl get nodes"
-}

@@ -86,6 +86,7 @@ module "route_tables" {
 
   tags = var.tags
 }
+<<<<<<< HEAD
 
 # Módulo EKS (cluster e node group)
 module "eks" {
@@ -111,3 +112,5 @@ module "eks" {
 
   tags = var.tags
 }
+=======
+>>>>>>> parent of e1972b4 (Inclusão do módulo de EKS)

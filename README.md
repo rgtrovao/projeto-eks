@@ -25,11 +25,7 @@ Terraform-EKS/
     │   ├── main.tf
     │   ├── variables.tf
     │   └── outputs.tf
-    ├── route_tables/          # Módulo Route Tables
-    │   ├── main.tf
-    │   ├── variables.tf
-    │   └── outputs.tf
-    └── eks/                   # Módulo EKS (cluster e node groups)
+    └── route_tables/          # Módulo Route Tables
         ├── main.tf
         ├── variables.tf
         └── outputs.tf
@@ -46,8 +42,6 @@ O projeto cria a seguinte infraestrutura:
 - **Internet Gateway**: Conecta a VPC à internet
 - **NAT Gateways**: Permite que recursos em subnets privadas acessem a internet
 - **Route Tables**: Configuram o roteamento de tráfego entre subnets
-- **Cluster EKS**: Cluster Kubernetes gerenciado pela AWS
-- **Node Group EKS**: Grupo gerenciado de nós EC2 (t3.micro)
 
 ## 🚀 Pré-requisitos
 
@@ -119,32 +113,6 @@ terraform apply
 terraform destroy
 ```
 
-### Configurar o kubectl para acessar o cluster EKS
-
-Após o deploy do cluster EKS, você precisa configurar o kubectl para acessá-lo:
-
-1. **Obter o comando de configuração** (recomendado):
-```bash
-terraform output -raw eks_configure_kubectl | bash
-```
-
-Ou execute manualmente:
-```bash
-aws eks update-kubeconfig --region us-east-1 --name <nome-do-cluster>
-```
-
-2. **Verificar a conexão**:
-```bash
-kubectl get nodes
-```
-
-Você deve ver os 2 nós do node group listados.
-
-**Nota**: Certifique-se de ter:
-- AWS CLI instalado e configurado
-- kubectl instalado
-- Permissões IAM adequadas para acessar o cluster EKS
-
 ## 📝 Variáveis Principais
 
 | Variável | Descrição | Padrão |
@@ -159,6 +127,7 @@ Você deve ver os 2 nós do node group listados.
 | `private_subnet_cidrs` | CIDRs das subnets privadas | `["10.0.11.0/24", "10.0.12.0/24", "10.0.13.0/24"]` |
 | `database_subnet_cidrs` | CIDRs das subnets de BD | `["10.0.21.0/24", "10.0.22.0/24", "10.0.23.0/24"]` |
 | `enable_nat_gateway` | Habilitar NAT Gateway | `true` |
+<<<<<<< HEAD
 | `eks_cluster_version` | Versão do Kubernetes no EKS | `"1.30"` |
 | `eks_node_desired_size` | Número desejado de nós no node group | `2` |
 | `eks_node_min_size` | Número mínimo de nós no node group | `2` |
@@ -168,6 +137,8 @@ Você deve ver os 2 nós do node group listados.
 | `enable_vpc_cni_addon` | Habilitar add-on VPC CNI gerenciado | `true` |
 | `enable_coredns_addon` | Habilitar add-on CoreDNS gerenciado | `true` |
 | `enable_kube_proxy_addon` | Habilitar add-on kube-proxy gerenciado | `true` |
+=======
+>>>>>>> parent of e1972b4 (Inclusão do módulo de EKS)
 
 ## 📤 Outputs
 
@@ -183,6 +154,7 @@ O projeto gera os seguintes outputs:
 - `private_route_table_ids`: IDs das route tables privadas
 - `database_route_table_ids`: IDs das route tables de banco de dados
 - `nat_gateway_ids`: IDs dos NAT Gateways
+<<<<<<< HEAD
 - `eks_cluster_name`: Nome do cluster EKS
 - `eks_cluster_endpoint`: Endpoint da API do cluster EKS
 - `eks_cluster_ca_certificate`: Certificado CA (base64) do cluster EKS
@@ -192,6 +164,8 @@ O projeto gera os seguintes outputs:
 - `vpc_cni_addon_arn`: ARN do add-on VPC CNI (se habilitado)
 - `coredns_addon_arn`: ARN do add-on CoreDNS (se habilitado)
 - `kube_proxy_addon_arn`: ARN do add-on kube-proxy (se habilitado)
+=======
+>>>>>>> parent of e1972b4 (Inclusão do módulo de EKS)
 
 ## 🏷️ Nomenclatura
 
@@ -244,6 +218,7 @@ Cria subnets públicas, privadas e de banco de dados, além de NAT Gateways quan
 ### Módulo Route Tables
 Configura as tabelas de roteamento para cada tipo de subnet.
 
+<<<<<<< HEAD
 ### Módulo EKS
 Cria o cluster EKS e um node group gerenciado com nós `t3.micro` em subnets privadas, seguindo boas práticas (IAM Roles dedicadas, security groups separados para control plane e nós, e auto-scaling configurável).
 
@@ -254,6 +229,8 @@ Cria o cluster EKS e um node group gerenciado com nós `t3.micro` em subnets pri
 
 Todos os add-ons são gerenciados pela AWS, facilitando atualizações e manutenção.
 
+=======
+>>>>>>> parent of e1972b4 (Inclusão do módulo de EKS)
 ## 🐛 Troubleshooting
 
 ### Erro: "InvalidParameterValue"
