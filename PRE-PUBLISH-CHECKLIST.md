@@ -48,7 +48,7 @@ Added to **README.md**:
 ### ✅ Sensitive Information Scan
 
 ```bash
-# Executed: grep -r "rgtrovao|575530852213"
+# Executed: grep -r for sensitive information
 Result: ✓ No sensitive information found
 ```
 

@@ -149,17 +149,17 @@ mkdir eks-project && cd eks-project
 Terraform needs a place to store infrastructure state:
 
 ```bash
-# Create S3 bucket (if it doesn't exist)
-aws s3 mb s3://rgtrovao-terraform-bucket --region us-east-1
+# Create S3 bucket (name must be globally unique)
+aws s3 mb s3://your-unique-terraform-state --region us-east-1
 
 # Enable versioning (security backup)
 aws s3api put-bucket-versioning \
-  --bucket rgtrovao-terraform-bucket \
+  --bucket your-unique-terraform-state \
   --versioning-configuration Status=Enabled
 
 # Enable encryption
 aws s3api put-bucket-encryption \
-  --bucket rgtrovao-terraform-bucket \
+  --bucket your-unique-terraform-state \
   --server-side-encryption-configuration '{
     "Rules": [{
       "ApplyServerSideEncryptionByDefault": {
@@ -171,11 +171,11 @@ aws s3api put-bucket-encryption \
 
 ### Step 3: Configure Backend
 
-The S3 backend is already configured in `main.tf`:
+Edit `main.tf` file and change the bucket name:
 
 ```hcl
 backend "s3" {
-  bucket = "rgtrovao-terraform-bucket"
+  bucket = "your-unique-terraform-state"  # ← CHANGE HERE
   key    = "eks/terraform.tfstate"
   region = "us-east-1"
 }
@@ -193,7 +193,7 @@ Edit `terraform.tfvars`:
 
 ```hcl
 # Identification
-project_name = "rgtrovao-eks"
+project_name = "my-project"     # ← Change
 environment  = "dev"
 
 # Network
@@ -275,7 +275,7 @@ After creation, configure access:
 terraform output configure_kubectl
 
 # Or execute directly:
-aws eks update-kubeconfig --region us-east-1 --name rgtrovao-eks-eks
+aws eks update-kubeconfig --region us-east-1 --name my-project-eks
 
 # Verify connection
 kubectl get nodes
@@ -404,7 +404,7 @@ aws eks list-clusters --region us-east-1
 # Should return empty: {"clusters": []}
 
 # Check VPCs
-aws ec2 describe-vpcs --filters "Name=tag:Project,Values=rgtrovao-eks" --region us-east-1
+aws ec2 describe-vpcs --filters "Name=tag:Project,Values=my-project" --region us-east-1
 
 # Should return empty
 ```
@@ -544,7 +544,7 @@ kubectl cluster-info
 ```bash
 # Check undestroyed resources
 aws resourcegroupstaggingapi get-resources \
-  --tag-filters Key=Project,Values=rgtrovao-eks
+  --tag-filters Key=Project,Values=my-project
 
 # Delete orphaned Load Balancers
 aws elb describe-load-balancers --region us-east-1

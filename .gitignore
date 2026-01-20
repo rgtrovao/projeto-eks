@@ -1,29 +1,18 @@
-# Terraform
+# Terraform files
 .terraform/
-.terraform.lock.hcl
 *.tfstate
 *.tfstate.*
 *.tfvars
-!terraform.tfvars.example
 crash.log
-crash.*.log
-override.tf
-override.tf.json
-*_override.tf
-*_override.tf.json
-tfplan*
+*.tfplan
 
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Project specific
+# Output directory
 output/
-*.log
+tfplan
+
+# Local configuration files (DO NOT COMMIT)
+setup-local.sh
+LOCAL-SETUP-GUIDE.md
+main.tf.original
+main.tf.backup
+*.bak

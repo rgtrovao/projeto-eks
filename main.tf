@@ -9,7 +9,7 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "rgtrovao-terraform-bucket"
+    bucket = "YOUR-TERRAFORM-BUCKET"
     key    = "eks/terraform.tfstate"
     region = "us-east-1"
   }

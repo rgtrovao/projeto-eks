@@ -8,18 +8,20 @@
 
 ## ⚠️ IMPORTANT: Initial Setup
 
-**Before using this project:**
+**Before using this project, you MUST:**
 
-- ✅ The S3 bucket `rgtrovao-terraform-bucket` is already configured in `main.tf`
-- ✅ The project name is set to `rgtrovao-eks`
-- ✅ **Never commit** `.tfvars` files with real credentials (already protected by `.gitignore`)
+1. ✅ **Create your S3 bucket** to store Terraform state
+2. ✅ **Edit `main.tf`** and replace `YOUR-TERRAFORM-BUCKET` with your bucket name
+3. ✅ **Never commit** `.tfvars` files with real credentials (already protected by `.gitignore`)
 
 ```bash
-# Ensure the S3 bucket exists
-aws s3 ls s3://rgtrovao-terraform-bucket --region us-east-1
+# 1. Create S3 bucket
+aws s3 mb s3://your-unique-terraform-bucket --region us-east-1
 
-# If it doesn't exist, create it:
-aws s3 mb s3://rgtrovao-terraform-bucket --region us-east-1
+# 2. Edit main.tf (line 12)
+# backend "s3" {
+#   bucket = "your-unique-terraform-bucket"  # ← Change here
+# }
 ```
 
 ## 📋 What this project does
@@ -176,7 +178,7 @@ eks-project/
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `project_name` | Project name | `rgtrovao-eks` |
+| `project_name` | Project name | `my-project` |
 | `aws_region` | AWS Region | `us-east-1` |
 | `vpc_cidr` | VPC CIDR | `10.0.0.0/16` |
 | `availability_zones` | AZs to use | `["us-east-1a", "us-east-1b"]` |
