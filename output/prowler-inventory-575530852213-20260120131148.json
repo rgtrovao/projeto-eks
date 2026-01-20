@@ -1,0 +1,2511 @@
+[
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "elastic-ip",
+        "AWS_ResourceID": "eipalloc-03b5dc010100f14c1",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:elastic-ip/eipalloc-03b5dc010100f14c1",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "ElasticIP"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-vpc-nat-eip-1"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "elastic-ip",
+        "AWS_ResourceID": "eipalloc-05a42364456d5ddf0",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:elastic-ip/eipalloc-05a42364456d5ddf0",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "ElasticIP"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-vpc-nat-eip-2"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "elastic-ip",
+        "AWS_ResourceID": "eipalloc-0ec62aa7eea591412",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:elastic-ip/eipalloc-0ec62aa7eea591412",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "ElasticIP"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-vpc-nat-eip-3"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "instance",
+        "AWS_ResourceID": "i-0876fdd10777428a9",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:instance/i-0876fdd10777428a9",
+        "AWS_Tags": [
+            {
+                "Key": "aws:autoscaling:groupName",
+                "Value": "eks-rgtrovao-project-eks-node-group-4acdee06-0616-3543-15ba-906a21746100"
+            },
+            {
+                "Key": "aws:ec2:fleet-id",
+                "Value": "fleet-7b159b0e-8924-66be-2432-a522a016b646"
+            },
+            {
+                "Key": "k8s.io/cluster-autoscaler/rgtrovao-project-eks-cluster",
+                "Value": "owned"
+            },
+            {
+                "Key": "eks:cluster-name",
+                "Value": "rgtrovao-project-eks-cluster"
+            },
+            {
+                "Key": "aws:ec2launchtemplate:version",
+                "Value": "1"
+            },
+            {
+                "Key": "eks:nodegroup-name",
+                "Value": "rgtrovao-project-eks-node-group"
+            },
+            {
+                "Key": "k8s.io/cluster-autoscaler/enabled",
+                "Value": "true"
+            },
+            {
+                "Key": "kubernetes.io/cluster/rgtrovao-project-eks-cluster",
+                "Value": "owned"
+            },
+            {
+                "Key": "aws:ec2launchtemplate:id",
+                "Value": "lt-0d27d25e0c88185bb"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "instance",
+        "AWS_ResourceID": "i-0a276aedbdd604015",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:instance/i-0a276aedbdd604015",
+        "AWS_Tags": [
+            {
+                "Key": "aws:autoscaling:groupName",
+                "Value": "eks-rgtrovao-project-eks-node-group-50cdee13-c8ac-cf4b-ba89-7d68a3cecfe3"
+            },
+            {
+                "Key": "aws:ec2:fleet-id",
+                "Value": "fleet-d99fb326-ab06-ce34-2638-252a452805a0"
+            },
+            {
+                "Key": "k8s.io/cluster-autoscaler/rgtrovao-project-eks-cluster",
+                "Value": "owned"
+            },
+            {
+                "Key": "aws:eks:cluster-name",
+                "Value": "rgtrovao-project-eks-cluster"
+            },
+            {
+                "Key": "eks:cluster-name",
+                "Value": "rgtrovao-project-eks-cluster"
+            },
+            {
+                "Key": "aws:ec2launchtemplate:version",
+                "Value": "1"
+            },
+            {
+                "Key": "eks:nodegroup-name",
+                "Value": "rgtrovao-project-eks-node-group"
+            },
+            {
+                "Key": "k8s.io/cluster-autoscaler/enabled",
+                "Value": "true"
+            },
+            {
+                "Key": "kubernetes.io/cluster/rgtrovao-project-eks-cluster",
+                "Value": "owned"
+            },
+            {
+                "Key": "aws:ec2launchtemplate:id",
+                "Value": "lt-040ee9518a2be44cf"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "instance",
+        "AWS_ResourceID": "i-0aa7b03a1921608a8",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:instance/i-0aa7b03a1921608a8",
+        "AWS_Tags": [
+            {
+                "Key": "aws:autoscaling:groupName",
+                "Value": "eks-rgtrovao-project-eks-node-group-50cdee13-c8ac-cf4b-ba89-7d68a3cecfe3"
+            },
+            {
+                "Key": "aws:ec2:fleet-id",
+                "Value": "fleet-cd950d1d-be24-e42f-a6b0-2b08bfc76a81"
+            },
+            {
+                "Key": "k8s.io/cluster-autoscaler/rgtrovao-project-eks-cluster",
+                "Value": "owned"
+            },
+            {
+                "Key": "aws:eks:cluster-name",
+                "Value": "rgtrovao-project-eks-cluster"
+            },
+            {
+                "Key": "eks:cluster-name",
+                "Value": "rgtrovao-project-eks-cluster"
+            },
+            {
+                "Key": "aws:ec2launchtemplate:version",
+                "Value": "1"
+            },
+            {
+                "Key": "eks:nodegroup-name",
+                "Value": "rgtrovao-project-eks-node-group"
+            },
+            {
+                "Key": "k8s.io/cluster-autoscaler/enabled",
+                "Value": "true"
+            },
+            {
+                "Key": "kubernetes.io/cluster/rgtrovao-project-eks-cluster",
+                "Value": "owned"
+            },
+            {
+                "Key": "aws:ec2launchtemplate:id",
+                "Value": "lt-040ee9518a2be44cf"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "instance",
+        "AWS_ResourceID": "i-0f77d532331dd907b",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:instance/i-0f77d532331dd907b",
+        "AWS_Tags": [
+            {
+                "Key": "aws:autoscaling:groupName",
+                "Value": "eks-rgtrovao-project-eks-node-group-4acdee06-0616-3543-15ba-906a21746100"
+            },
+            {
+                "Key": "aws:ec2:fleet-id",
+                "Value": "fleet-d3849804-d9bd-c996-0eb8-a420ad2b6727"
+            },
+            {
+                "Key": "k8s.io/cluster-autoscaler/rgtrovao-project-eks-cluster",
+                "Value": "owned"
+            },
+            {
+                "Key": "eks:cluster-name",
+                "Value": "rgtrovao-project-eks-cluster"
+            },
+            {
+                "Key": "aws:ec2launchtemplate:version",
+                "Value": "1"
+            },
+            {
+                "Key": "eks:nodegroup-name",
+                "Value": "rgtrovao-project-eks-node-group"
+            },
+            {
+                "Key": "k8s.io/cluster-autoscaler/enabled",
+                "Value": "true"
+            },
+            {
+                "Key": "kubernetes.io/cluster/rgtrovao-project-eks-cluster",
+                "Value": "owned"
+            },
+            {
+                "Key": "aws:ec2launchtemplate:id",
+                "Value": "lt-0d27d25e0c88185bb"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "internet-gateway",
+        "AWS_ResourceID": "igw-0b057fc511ac32a79",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:internet-gateway/igw-0b057fc511ac32a79",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "InternetGateway"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-vpc-igw"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "launch-template",
+        "AWS_ResourceID": "lt-040ee9518a2be44cf",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:launch-template/lt-040ee9518a2be44cf",
+        "AWS_Tags": [
+            {
+                "Key": "eks:cluster-name",
+                "Value": "rgtrovao-project-eks-cluster"
+            },
+            {
+                "Key": "eks:nodegroup-name",
+                "Value": "rgtrovao-project-eks-node-group"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "natgateway",
+        "AWS_ResourceID": "nat-00fff628db1cbb7e6",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:natgateway/nat-00fff628db1cbb7e6",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "NATGateway"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-vpc-nat-gateway-3"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "natgateway",
+        "AWS_ResourceID": "nat-022952f0de6dd2834",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:natgateway/nat-022952f0de6dd2834",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "eks-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "NATGateway"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "eks-vpc-nat-gateway-2"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "natgateway",
+        "AWS_ResourceID": "nat-023c5663caaebcf49",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:natgateway/nat-023c5663caaebcf49",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "NATGateway"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-vpc-nat-gateway-3"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "natgateway",
+        "AWS_ResourceID": "nat-03baf2efa7055ec26",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:natgateway/nat-03baf2efa7055ec26",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "eks-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "NATGateway"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "eks-vpc-nat-gateway-1"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "natgateway",
+        "AWS_ResourceID": "nat-07e256115d22f0e11",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:natgateway/nat-07e256115d22f0e11",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "NATGateway"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-vpc-nat-gateway-2"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "natgateway",
+        "AWS_ResourceID": "nat-083e0d1b54ccbeed2",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:natgateway/nat-083e0d1b54ccbeed2",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "NATGateway"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-vpc-nat-gateway-1"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "natgateway",
+        "AWS_ResourceID": "nat-09763483a012c2679",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:natgateway/nat-09763483a012c2679",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "NATGateway"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-vpc-nat-gateway-1"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "natgateway",
+        "AWS_ResourceID": "nat-0b597056b6a67caab",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:natgateway/nat-0b597056b6a67caab",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "NATGateway"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-vpc-nat-gateway-3"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "natgateway",
+        "AWS_ResourceID": "nat-0bce106f8d7a561ff",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:natgateway/nat-0bce106f8d7a561ff",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "eks-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "NATGateway"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "eks-vpc-nat-gateway-3"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "natgateway",
+        "AWS_ResourceID": "nat-0e15561e4eea51068",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:natgateway/nat-0e15561e4eea51068",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "NATGateway"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-vpc-nat-gateway-1"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "natgateway",
+        "AWS_ResourceID": "nat-0e944c292e50e53b3",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:natgateway/nat-0e944c292e50e53b3",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "NATGateway"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-vpc-nat-gateway-2"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "natgateway",
+        "AWS_ResourceID": "nat-0ee75d459b81f5dba",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:natgateway/nat-0ee75d459b81f5dba",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "NATGateway"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-vpc-nat-gateway-2"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "network-interface",
+        "AWS_ResourceID": "eni-013a11a27afd9dec0",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:network-interface/eni-013a11a27afd9dec0",
+        "AWS_Tags": [
+            {
+                "Key": "eks:eni:owner",
+                "Value": "amazon-vpc-cni"
+            },
+            {
+                "Key": "node.k8s.amazonaws.com/instance_id",
+                "Value": "i-0876fdd10777428a9"
+            },
+            {
+                "Key": "cluster.k8s.amazonaws.com/name",
+                "Value": "rgtrovao-project-eks-cluster"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "network-interface",
+        "AWS_ResourceID": "eni-05ad792467da80309",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:network-interface/eni-05ad792467da80309",
+        "AWS_Tags": [
+            {
+                "Key": "eks:eni:owner",
+                "Value": "amazon-vpc-cni"
+            },
+            {
+                "Key": "node.k8s.amazonaws.com/instance_id",
+                "Value": "i-0f77d532331dd907b"
+            },
+            {
+                "Key": "node.k8s.amazonaws.com/createdAt",
+                "Value": "2026-01-20T15:37:08Z"
+            },
+            {
+                "Key": "cluster.k8s.amazonaws.com/name",
+                "Value": "rgtrovao-project-eks-cluster"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "network-interface",
+        "AWS_ResourceID": "eni-063db3b0a13f7cf77",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:network-interface/eni-063db3b0a13f7cf77",
+        "AWS_Tags": [
+            {
+                "Key": "eks:eni:owner",
+                "Value": "amazon-vpc-cni"
+            },
+            {
+                "Key": "node.k8s.amazonaws.com/instance_id",
+                "Value": "i-0aa7b03a1921608a8"
+            },
+            {
+                "Key": "node.k8s.amazonaws.com/createdAt",
+                "Value": "2026-01-20T16:06:53Z"
+            },
+            {
+                "Key": "cluster.k8s.amazonaws.com/name",
+                "Value": "rgtrovao-project-eks-cluster"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "network-interface",
+        "AWS_ResourceID": "eni-0db5c5f4c73d419b0",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:network-interface/eni-0db5c5f4c73d419b0",
+        "AWS_Tags": [
+            {
+                "Key": "eks:eni:owner",
+                "Value": "amazon-vpc-cni"
+            },
+            {
+                "Key": "node.k8s.amazonaws.com/instance_id",
+                "Value": "i-0aa7b03a1921608a8"
+            },
+            {
+                "Key": "cluster.k8s.amazonaws.com/name",
+                "Value": "rgtrovao-project-eks-cluster"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "network-interface",
+        "AWS_ResourceID": "eni-0ecaea18c9242cf5f",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:network-interface/eni-0ecaea18c9242cf5f",
+        "AWS_Tags": [
+            {
+                "Key": "eks:eni:owner",
+                "Value": "amazon-vpc-cni"
+            },
+            {
+                "Key": "node.k8s.amazonaws.com/instance_id",
+                "Value": "i-0a276aedbdd604015"
+            },
+            {
+                "Key": "cluster.k8s.amazonaws.com/name",
+                "Value": "rgtrovao-project-eks-cluster"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "network-interface",
+        "AWS_ResourceID": "eni-0f908dfd63936c520",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:network-interface/eni-0f908dfd63936c520",
+        "AWS_Tags": [
+            {
+                "Key": "eks:eni:owner",
+                "Value": "amazon-vpc-cni"
+            },
+            {
+                "Key": "node.k8s.amazonaws.com/instance_id",
+                "Value": "i-0f77d532331dd907b"
+            },
+            {
+                "Key": "cluster.k8s.amazonaws.com/name",
+                "Value": "rgtrovao-project-eks-cluster"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "route-table",
+        "AWS_ResourceID": "rtb-03ed73d14739540c4",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:route-table/rtb-03ed73d14739540c4",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "PrivateRouteTable"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Tier",
+                "Value": "Private"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-vpc-private-rt-3"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "route-table",
+        "AWS_ResourceID": "rtb-058dd301f3c3674e6",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:route-table/rtb-058dd301f3c3674e6",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "PrivateRouteTable"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Tier",
+                "Value": "Private"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-vpc-private-rt-1"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "route-table",
+        "AWS_ResourceID": "rtb-06293045c2651a9be",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:route-table/rtb-06293045c2651a9be",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "PublicRouteTable"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Tier",
+                "Value": "Public"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-vpc-public-rt"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "route-table",
+        "AWS_ResourceID": "rtb-070801437951320da",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:route-table/rtb-070801437951320da",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "DatabaseRouteTable"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Tier",
+                "Value": "Database"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-vpc-database-rt-2"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "route-table",
+        "AWS_ResourceID": "rtb-0db091d7a53049e50",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:route-table/rtb-0db091d7a53049e50",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "DatabaseRouteTable"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Tier",
+                "Value": "Database"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-vpc-database-rt-3"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "route-table",
+        "AWS_ResourceID": "rtb-0e73cdf6f0b85a176",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:route-table/rtb-0e73cdf6f0b85a176",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "PrivateRouteTable"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Tier",
+                "Value": "Private"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-vpc-private-rt-2"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "route-table",
+        "AWS_ResourceID": "rtb-0f297b22aa24dca20",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:route-table/rtb-0f297b22aa24dca20",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "DatabaseRouteTable"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Tier",
+                "Value": "Database"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-vpc-database-rt-1"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "security-group",
+        "AWS_ResourceID": "sg-0054f7014774d1476",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:security-group/sg-0054f7014774d1476",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "EKSNodeSecurityGroup"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-project-eks-cluster-nodes-sg"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "security-group",
+        "AWS_ResourceID": "sg-093fff54798b86102",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:security-group/sg-093fff54798b86102",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "EKSClusterSecurityGroup"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-project-eks-cluster-cluster-sg"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "security-group",
+        "AWS_ResourceID": "sg-0a27a5a37328ee5fe",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:security-group/sg-0a27a5a37328ee5fe",
+        "AWS_Tags": [
+            {
+                "Key": "aws:eks:cluster-name",
+                "Value": "rgtrovao-project-eks-cluster"
+            },
+            {
+                "Key": "kubernetes.io/cluster/rgtrovao-project-eks-cluster",
+                "Value": "owned"
+            },
+            {
+                "Key": "Name",
+                "Value": "eks-cluster-sg-rgtrovao-project-eks-cluster-1503557375"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "subnet",
+        "AWS_ResourceID": "subnet-002e0a1bd3373103c",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:subnet/subnet-002e0a1bd3373103c",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "PublicSubnet"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Tier",
+                "Value": "Public"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-vpc-public-subnet-2"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "subnet",
+        "AWS_ResourceID": "subnet-0037249b5aa8d5037",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:subnet/subnet-0037249b5aa8d5037",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "PublicSubnet"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Tier",
+                "Value": "Public"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-vpc-public-subnet-1"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "subnet",
+        "AWS_ResourceID": "subnet-00418c6c524fd01bf",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:subnet/subnet-00418c6c524fd01bf",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "PrivateSubnet"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Tier",
+                "Value": "Private"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-vpc-private-subnet-1"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "subnet",
+        "AWS_ResourceID": "subnet-00ba19e158e526765",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:subnet/subnet-00ba19e158e526765",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "eks-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "DatabaseSubnet"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Tier",
+                "Value": "Database"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "eks-vpc-database-subnet-3"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "subnet",
+        "AWS_ResourceID": "subnet-00c4b187917d4ad62",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:subnet/subnet-00c4b187917d4ad62",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "PublicSubnet"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Tier",
+                "Value": "Public"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-vpc-public-subnet-1"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "subnet",
+        "AWS_ResourceID": "subnet-02d22670e937392e9",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:subnet/subnet-02d22670e937392e9",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "eks-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "DatabaseSubnet"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Tier",
+                "Value": "Database"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "eks-vpc-database-subnet-2"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "subnet",
+        "AWS_ResourceID": "subnet-03b61fbc5fb5a506f",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:subnet/subnet-03b61fbc5fb5a506f",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "PublicSubnet"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Tier",
+                "Value": "Public"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-vpc-public-subnet-3"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "subnet",
+        "AWS_ResourceID": "subnet-042b954f22733c4ef",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:subnet/subnet-042b954f22733c4ef",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "eks-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "PublicSubnet"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Tier",
+                "Value": "Public"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "eks-vpc-public-subnet-1"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "subnet",
+        "AWS_ResourceID": "subnet-0507e040a6d51b8c1",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:subnet/subnet-0507e040a6d51b8c1",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "PrivateSubnet"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Tier",
+                "Value": "Private"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-vpc-private-subnet-3"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "subnet",
+        "AWS_ResourceID": "subnet-061674496cd349bec",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:subnet/subnet-061674496cd349bec",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "DatabaseSubnet"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Tier",
+                "Value": "Database"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-vpc-database-subnet-2"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "subnet",
+        "AWS_ResourceID": "subnet-062795d77373455be",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:subnet/subnet-062795d77373455be",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "eks-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "PrivateSubnet"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Tier",
+                "Value": "Private"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "eks-vpc-private-subnet-2"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "subnet",
+        "AWS_ResourceID": "subnet-06f2647f04d36f74a",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:subnet/subnet-06f2647f04d36f74a",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "DatabaseSubnet"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Tier",
+                "Value": "Database"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-vpc-database-subnet-1"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "subnet",
+        "AWS_ResourceID": "subnet-07a324108eee26675",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:subnet/subnet-07a324108eee26675",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "eks-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "PublicSubnet"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Tier",
+                "Value": "Public"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "eks-vpc-public-subnet-3"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "subnet",
+        "AWS_ResourceID": "subnet-07fb72e7f7a0c6cc0",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:subnet/subnet-07fb72e7f7a0c6cc0",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "PrivateSubnet"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Tier",
+                "Value": "Private"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-vpc-private-subnet-2"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "subnet",
+        "AWS_ResourceID": "subnet-09c323792646d9f12",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:subnet/subnet-09c323792646d9f12",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "eks-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "PrivateSubnet"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Tier",
+                "Value": "Private"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "eks-vpc-private-subnet-3"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "subnet",
+        "AWS_ResourceID": "subnet-0a169749379ec4597",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:subnet/subnet-0a169749379ec4597",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "DatabaseSubnet"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Tier",
+                "Value": "Database"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-vpc-database-subnet-1"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "subnet",
+        "AWS_ResourceID": "subnet-0a2f2fc1739bea5d2",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:subnet/subnet-0a2f2fc1739bea5d2",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "PrivateSubnet"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Tier",
+                "Value": "Private"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-vpc-private-subnet-3"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "subnet",
+        "AWS_ResourceID": "subnet-0a4fcd680000cd6c1",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:subnet/subnet-0a4fcd680000cd6c1",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "PrivateSubnet"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Tier",
+                "Value": "Private"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-vpc-private-subnet-1"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "subnet",
+        "AWS_ResourceID": "subnet-0ad0d4aaccfbf451c",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:subnet/subnet-0ad0d4aaccfbf451c",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "PrivateSubnet"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Tier",
+                "Value": "Private"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-vpc-private-subnet-2"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "subnet",
+        "AWS_ResourceID": "subnet-0ad4e1c1a5b4c7ad7",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:subnet/subnet-0ad4e1c1a5b4c7ad7",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "DatabaseSubnet"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Tier",
+                "Value": "Database"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-vpc-database-subnet-2"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "subnet",
+        "AWS_ResourceID": "subnet-0b8833c6600c33afa",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:subnet/subnet-0b8833c6600c33afa",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "PrivateSubnet"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Tier",
+                "Value": "Private"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-vpc-private-subnet-3"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "subnet",
+        "AWS_ResourceID": "subnet-0c49aacdae676a7a2",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:subnet/subnet-0c49aacdae676a7a2",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "DatabaseSubnet"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Tier",
+                "Value": "Database"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-vpc-database-subnet-2"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "subnet",
+        "AWS_ResourceID": "subnet-0c6165683e7e4c01c",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:subnet/subnet-0c6165683e7e4c01c",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "PublicSubnet"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Tier",
+                "Value": "Public"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-vpc-public-subnet-2"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "subnet",
+        "AWS_ResourceID": "subnet-0d33e81d8d9b8e0e1",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:subnet/subnet-0d33e81d8d9b8e0e1",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "PublicSubnet"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Tier",
+                "Value": "Public"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-vpc-public-subnet-3"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "subnet",
+        "AWS_ResourceID": "subnet-0d62ec42a02b3c14e",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:subnet/subnet-0d62ec42a02b3c14e",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "PublicSubnet"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Tier",
+                "Value": "Public"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-vpc-public-subnet-3"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "subnet",
+        "AWS_ResourceID": "subnet-0da7dc809c841e7fe",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:subnet/subnet-0da7dc809c841e7fe",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "PrivateSubnet"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Tier",
+                "Value": "Private"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-vpc-private-subnet-1"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "subnet",
+        "AWS_ResourceID": "subnet-0f54186cb5deba32b",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:subnet/subnet-0f54186cb5deba32b",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "PublicSubnet"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Tier",
+                "Value": "Public"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-vpc-public-subnet-3"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "subnet",
+        "AWS_ResourceID": "subnet-0f94fb74cecdf5d86",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:subnet/subnet-0f94fb74cecdf5d86",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "DatabaseSubnet"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Tier",
+                "Value": "Database"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-vpc-database-subnet-3"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "subnet",
+        "AWS_ResourceID": "subnet-0fe09018868a498ed",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:subnet/subnet-0fe09018868a498ed",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "DatabaseSubnet"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Tier",
+                "Value": "Database"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-vpc-database-subnet-3"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "ec2",
+        "AWS_ResourceType": "vpc",
+        "AWS_ResourceID": "vpc-037211cfa34cfc51a",
+        "AWS_ResourceARN": "arn:aws:ec2:us-east-1:575530852213:vpc/vpc-037211cfa34cfc51a",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "VPC"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-vpc"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "eks",
+        "AWS_ResourceType": "cluster",
+        "AWS_ResourceID": "rgtrovao-project-eks-cluster",
+        "AWS_ResourceARN": "arn:aws:eks:us-east-1:575530852213:cluster/rgtrovao-project-eks-cluster",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "EKSCluster"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-project-eks-cluster"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "eks",
+        "AWS_ResourceType": "nodegroup",
+        "AWS_ResourceID": "50cdee13-c8ac-cf4b-ba89-7d68a3cecfe3",
+        "AWS_ResourceARN": "arn:aws:eks:us-east-1:575530852213:nodegroup/rgtrovao-project-eks-cluster/rgtrovao-project-eks-node-group/50cdee13-c8ac-cf4b-ba89-7d68a3cecfe3",
+        "AWS_Tags": [
+            {
+                "Key": "Project",
+                "Value": "rgtrovao-project"
+            },
+            {
+                "Key": "Type",
+                "Value": "EKSNodeGroup"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "Terraform"
+            },
+            {
+                "Key": "Environment",
+                "Value": "dev"
+            },
+            {
+                "Key": "Name",
+                "Value": "rgtrovao-project-eks-cluster-node-group"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "eks",
+        "AWS_ResourceType": "pod",
+        "AWS_ResourceID": "88ce3b93-cf4b-4660-b863-4a1abd245429",
+        "AWS_ResourceARN": "arn:aws:eks:us-east-1:575530852213:pod/rgtrovao-project-eks-cluster/kube-system/aws-node-k72d9/88ce3b93-cf4b-4660-b863-4a1abd245429",
+        "AWS_Tags": [
+            {
+                "Key": "controller-revision-hash",
+                "Value": "655b57d5fb"
+            },
+            {
+                "Key": "app.kubernetes.io/name",
+                "Value": "aws-node"
+            },
+            {
+                "Key": "pod-template-generation",
+                "Value": "1"
+            },
+            {
+                "Key": "app.kubernetes.io/instance",
+                "Value": "aws-vpc-cni"
+            },
+            {
+                "Key": "k8s-app",
+                "Value": "aws-node"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "eks",
+        "AWS_ResourceType": "pod",
+        "AWS_ResourceID": "ed4f40b7-7b61-495e-bbef-827902016a58",
+        "AWS_ResourceARN": "arn:aws:eks:us-east-1:575530852213:pod/rgtrovao-project-eks-cluster/kube-system/aws-node-n55pt/ed4f40b7-7b61-495e-bbef-827902016a58",
+        "AWS_Tags": [
+            {
+                "Key": "controller-revision-hash",
+                "Value": "655b57d5fb"
+            },
+            {
+                "Key": "app.kubernetes.io/name",
+                "Value": "aws-node"
+            },
+            {
+                "Key": "pod-template-generation",
+                "Value": "1"
+            },
+            {
+                "Key": "app.kubernetes.io/instance",
+                "Value": "aws-vpc-cni"
+            },
+            {
+                "Key": "k8s-app",
+                "Value": "aws-node"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "eks",
+        "AWS_ResourceType": "pod",
+        "AWS_ResourceID": "b083d2a2-afea-44f6-9717-11f39f0dc315",
+        "AWS_ResourceARN": "arn:aws:eks:us-east-1:575530852213:pod/rgtrovao-project-eks-cluster/kube-system/coredns-586b798467-khms8/b083d2a2-afea-44f6-9717-11f39f0dc315",
+        "AWS_Tags": [
+            {
+                "Key": "eks.amazonaws.com/component",
+                "Value": "coredns"
+            },
+            {
+                "Key": "pod-template-hash",
+                "Value": "586b798467"
+            },
+            {
+                "Key": "k8s-app",
+                "Value": "kube-dns"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "eks",
+        "AWS_ResourceType": "pod",
+        "AWS_ResourceID": "6d724b36-1147-420c-8273-4dc38a459f95",
+        "AWS_ResourceARN": "arn:aws:eks:us-east-1:575530852213:pod/rgtrovao-project-eks-cluster/kube-system/coredns-586b798467-rpnqm/6d724b36-1147-420c-8273-4dc38a459f95",
+        "AWS_Tags": [
+            {
+                "Key": "eks.amazonaws.com/component",
+                "Value": "coredns"
+            },
+            {
+                "Key": "pod-template-hash",
+                "Value": "586b798467"
+            },
+            {
+                "Key": "k8s-app",
+                "Value": "kube-dns"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "eks",
+        "AWS_ResourceType": "pod",
+        "AWS_ResourceID": "3a89e4de-b032-425b-9aa9-a73f335c16c2",
+        "AWS_ResourceARN": "arn:aws:eks:us-east-1:575530852213:pod/rgtrovao-project-eks-cluster/kube-system/kube-proxy-m6spb/3a89e4de-b032-425b-9aa9-a73f335c16c2",
+        "AWS_Tags": [
+            {
+                "Key": "controller-revision-hash",
+                "Value": "6555fcdf97"
+            },
+            {
+                "Key": "pod-template-generation",
+                "Value": "1"
+            },
+            {
+                "Key": "k8s-app",
+                "Value": "kube-proxy"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "eks",
+        "AWS_ResourceType": "pod",
+        "AWS_ResourceID": "1dbecd55-6597-4ae8-981e-5d1482a5b13e",
+        "AWS_ResourceARN": "arn:aws:eks:us-east-1:575530852213:pod/rgtrovao-project-eks-cluster/kube-system/kube-proxy-zzhnz/1dbecd55-6597-4ae8-981e-5d1482a5b13e",
+        "AWS_Tags": [
+            {
+                "Key": "controller-revision-hash",
+                "Value": "6555fcdf97"
+            },
+            {
+                "Key": "pod-template-generation",
+                "Value": "1"
+            },
+            {
+                "Key": "k8s-app",
+                "Value": "kube-proxy"
+            }
+        ]
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "events",
+        "AWS_ResourceType": "rule",
+        "AWS_ResourceID": "AutoScalingManagedRule",
+        "AWS_ResourceARN": "arn:aws:events:us-east-1:575530852213:rule/AutoScalingManagedRule",
+        "AWS_Tags": []
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "",
+        "AWS_Partition": "aws",
+        "AWS_Service": "iam",
+        "AWS_ResourceType": "role",
+        "AWS_ResourceID": "rgtrovao-project-eks-cluster-cluster-role",
+        "AWS_ResourceARN": "arn:aws:iam::575530852213:role/rgtrovao-project-eks-cluster-cluster-role",
+        "AWS_Tags": null
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "",
+        "AWS_Partition": "aws",
+        "AWS_Service": "iam",
+        "AWS_ResourceType": "role",
+        "AWS_ResourceID": "rgtrovao-project-eks-cluster-node-group-role",
+        "AWS_ResourceARN": "arn:aws:iam::575530852213:role/rgtrovao-project-eks-cluster-node-group-role",
+        "AWS_Tags": null
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "",
+        "AWS_Partition": "aws",
+        "AWS_Service": "iam",
+        "AWS_ResourceType": "user",
+        "AWS_ResourceID": "rgtrovao",
+        "AWS_ResourceARN": "arn:aws:iam::575530852213:user/rgtrovao",
+        "AWS_Tags": null
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "",
+        "AWS_Partition": "aws",
+        "AWS_Service": "payments",
+        "AWS_ResourceType": "payment-instrument",
+        "AWS_ResourceID": "5083d05b-253d-41e3-bd65-7e54a3998dba",
+        "AWS_ResourceARN": "arn:aws:payments::575530852213:payment-instrument:5083d05b-253d-41e3-bd65-7e54a3998dba",
+        "AWS_Tags": []
+    },
+    {
+        "AWS_AccountID": "575530852213",
+        "AWS_Region": "us-east-1",
+        "AWS_Partition": "aws",
+        "AWS_Service": "s3",
+        "AWS_ResourceType": "bucket",
+        "AWS_ResourceID": "rgtrovao-terraform-bucket",
+        "AWS_ResourceARN": "arn:aws:s3:us-east-1::rgtrovao-terraform-bucket",
+        "AWS_Tags": []
+    }
+]

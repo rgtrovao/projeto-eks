@@ -28,3 +28,18 @@ output "node_role_arn" {
   value       = aws_iam_role.node_group.arn
 }
 
+output "vpc_cni_addon_arn" {
+  description = "ARN do add-on VPC CNI"
+  value       = var.enable_vpc_cni_addon ? aws_eks_addon.vpc_cni[0].arn : null
+}
+
+output "coredns_addon_arn" {
+  description = "ARN do add-on CoreDNS"
+  value       = var.enable_coredns_addon ? aws_eks_addon.coredns[0].arn : null
+}
+
+output "kube_proxy_addon_arn" {
+  description = "ARN do add-on kube-proxy"
+  value       = var.enable_kube_proxy_addon ? aws_eks_addon.kube_proxy[0].arn : null
+}
+

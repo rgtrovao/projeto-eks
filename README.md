@@ -165,6 +165,9 @@ Você deve ver os 2 nós do node group listados.
 | `eks_node_max_size` | Número máximo de nós no node group | `3` |
 | `eks_node_instance_types` | Tipos de instância dos nós EKS | `["t3.micro"]` |
 | `eks_node_disk_size` | Tamanho do disco dos nós EKS (GB) | `20` |
+| `enable_vpc_cni_addon` | Habilitar add-on VPC CNI gerenciado | `true` |
+| `enable_coredns_addon` | Habilitar add-on CoreDNS gerenciado | `true` |
+| `enable_kube_proxy_addon` | Habilitar add-on kube-proxy gerenciado | `true` |
 
 ## 📤 Outputs
 
@@ -186,6 +189,9 @@ O projeto gera os seguintes outputs:
 - `eks_node_group_name`: Nome do node group EKS
 - `eks_configure_kubectl`: Comando para configurar o kubectl
 - `eks_test_connection`: Comando para testar a conexão com o cluster
+- `vpc_cni_addon_arn`: ARN do add-on VPC CNI (se habilitado)
+- `coredns_addon_arn`: ARN do add-on CoreDNS (se habilitado)
+- `kube_proxy_addon_arn`: ARN do add-on kube-proxy (se habilitado)
 
 ## 🏷️ Nomenclatura
 
@@ -241,6 +247,13 @@ Configura as tabelas de roteamento para cada tipo de subnet.
 ### Módulo EKS
 Cria o cluster EKS e um node group gerenciado com nós `t3.micro` em subnets privadas, seguindo boas práticas (IAM Roles dedicadas, security groups separados para control plane e nós, e auto-scaling configurável).
 
+**Add-ons Essenciais Gerenciados:**
+- **VPC CNI**: Plugin de rede para conectar pods à VPC
+- **CoreDNS**: Servidor DNS para resolução de nomes dentro do cluster
+- **kube-proxy**: Componente de rede para gerenciar Services do Kubernetes
+
+Todos os add-ons são gerenciados pela AWS, facilitando atualizações e manutenção.
+
 ## 🐛 Troubleshooting
 
 ### Erro: "InvalidParameterValue"
@@ -251,6 +264,13 @@ Aumente o tamanho do CIDR block ou reduza o número de subnets.
 
 ### NAT Gateway não está funcionando
 Verifique se o NAT Gateway está na subnet pública e se a route table privada está configurada corretamente.
+
+### Add-ons EKS não estão instalando
+Os add-ons são instalados após a criação do cluster e node group. Se houver problemas:
+1. Verifique se o cluster está no estado `ACTIVE`
+2. Verifique se o node group está no estado `ACTIVE`
+3. Para CoreDNS, aguarde a criação do node group primeiro
+4. Verifique os logs do CloudWatch para mais detalhes
 
 ## 📄 Licença
 

@@ -111,3 +111,21 @@ variable "eks_node_disk_size" {
   type        = number
   default     = 20
 }
+
+variable "enable_vpc_cni_addon" {
+  description = "Habilitar add-on VPC CNI gerenciado pela AWS"
+  type        = bool
+  default     = true
+}
+
+variable "enable_coredns_addon" {
+  description = "Habilitar add-on CoreDNS gerenciado pela AWS"
+  type        = bool
+  default     = true
+}
+
+variable "enable_kube_proxy_addon" {
+  description = "Habilitar add-on kube-proxy gerenciado pela AWS"
+  type        = bool
+  default     = true
+}

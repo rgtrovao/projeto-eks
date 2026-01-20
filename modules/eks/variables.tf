@@ -65,3 +65,39 @@ variable "tags" {
   default     = {}
 }
 
+variable "enable_vpc_cni_addon" {
+  description = "Habilitar add-on VPC CNI gerenciado pela AWS"
+  type        = bool
+  default     = true
+}
+
+variable "enable_coredns_addon" {
+  description = "Habilitar add-on CoreDNS gerenciado pela AWS"
+  type        = bool
+  default     = true
+}
+
+variable "enable_kube_proxy_addon" {
+  description = "Habilitar add-on kube-proxy gerenciado pela AWS"
+  type        = bool
+  default     = true
+}
+
+variable "vpc_cni_addon_version" {
+  description = "Versão do add-on VPC CNI (deixe vazio para usar a versão padrão)"
+  type        = string
+  default     = null
+}
+
+variable "coredns_addon_version" {
+  description = "Versão do add-on CoreDNS (deixe vazio para usar a versão padrão)"
+  type        = string
+  default     = null
+}
+
+variable "kube_proxy_addon_version" {
+  description = "Versão do add-on kube-proxy (deixe vazio para usar a versão padrão)"
+  type        = string
+  default     = null
+}
+

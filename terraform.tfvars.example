@@ -37,3 +37,8 @@ eks_node_min_size      = 2
 eks_node_max_size      = 3
 eks_node_instance_types = ["t3.micro"]
 eks_node_disk_size     = 20
+
+# EKS Add-ons Essenciais (gerenciados pela AWS)
+enable_vpc_cni_addon    = true
+enable_coredns_addon    = true
+enable_kube_proxy_addon = true
