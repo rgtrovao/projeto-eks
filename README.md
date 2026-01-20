@@ -1,272 +1,324 @@
-# Projeto Terraform - Infraestrutura AWS EKS
+# 🚀 Projeto EKS - Infraestrutura AWS com Terraform
 
-Este projeto provisiona uma infraestrutura completa na AWS seguindo as melhores práticas, incluindo VPC, Subnets (públicas, privadas e de banco de dados), Internet Gateway, NAT Gateways e tabelas de roteamento.
+> Cluster Kubernetes completo e otimizado na AWS com **economia de até 94%** usando estratégia sob demanda.
 
-## 📋 Estrutura do Projeto
+[![Terraform](https://img.shields.io/badge/Terraform-1.0+-623CE4?logo=terraform)](https://www.terraform.io/)
+[![AWS](https://img.shields.io/badge/AWS-EKS-FF9900?logo=amazon-aws)](https://aws.amazon.com/eks/)
+[![Kubernetes](https://img.shields.io/badge/Kubernetes-1.30-326CE5?logo=kubernetes)](https://kubernetes.io/)
 
+## 📋 O que este projeto faz?
+
+Provisiona uma infraestrutura completa e production-ready de **Amazon EKS** (Kubernetes gerenciado) usando **Terraform**, incluindo:
+
+- ✅ VPC com subnets públicas e privadas em 2 AZs
+- ✅ Cluster EKS (Kubernetes 1.30)
+- ✅ Node Group com Spot Instances (70% mais barato)
+- ✅ NAT Gateway, Internet Gateway e Route Tables
+- ✅ IAM Roles e Security Groups configurados
+- ✅ Tags para descoberta automática de recursos
+
+## 💰 Custo Estimado
+
+### Uso sob demanda (Recomendado para estudos)
 ```
-Terraform-EKS/
-├── main.tf                    # Configuração principal e módulos
-├── variables.tf               # Variáveis do projeto
-├── outputs.tf                 # Outputs do projeto
-├── terraform.tfvars.example   # Exemplo de variáveis
-├── .gitignore                # Arquivos ignorados pelo Git
-├── README.md                  # Documentação
-└── modules/
-    ├── vpc/                   # Módulo VPC
-    │   ├── main.tf
-    │   ├── variables.tf
-    │   └── outputs.tf
-    ├── internet_gateway/      # Módulo Internet Gateway
-    │   ├── main.tf
-    │   ├── variables.tf
-    │   └── outputs.tf
-    ├── subnets/               # Módulo Subnets
-    │   ├── main.tf
-    │   ├── variables.tf
-    │   └── outputs.tf
-    └── route_tables/          # Módulo Route Tables
-        ├── main.tf
-        ├── variables.tf
-        └── outputs.tf
+20h/semana: ~$15.37/mês (94% de economia vs 24/7)
+10h/semana: ~$8.08/mês  (94% de economia vs 24/7)
 ```
+
+### Uso contínuo 24/7
+```
+Spot Instances:    $126.70/mês
+On-Demand:         $138.23/mês
+```
+
+💡 **Estratégia**: Criar quando precisar (`terraform apply`), destruir quando terminar (`terraform destroy`)
+
+📊 [Ver análise detalhada de custos](CUSTOS.md)
 
 ## 🏗️ Arquitetura
 
-O projeto cria a seguinte infraestrutura:
-
-- **VPC**: Rede virtual isolada
-- **Subnets Públicas**: Para recursos que precisam de acesso à internet (Load Balancers, NAT Gateways)
-- **Subnets Privadas**: Para recursos de aplicação que precisam de acesso à internet via NAT Gateway
-- **Subnets de Banco de Dados**: Para bancos de dados, sem acesso direto à internet
-- **Internet Gateway**: Conecta a VPC à internet
-- **NAT Gateways**: Permite que recursos em subnets privadas acessem a internet
-- **Route Tables**: Configuram o roteamento de tráfego entre subnets
-
-## 🚀 Pré-requisitos
-
-- Terraform >= 1.0
-- AWS CLI configurado com credenciais válidas
-- Permissões adequadas na AWS para criar recursos de rede
-- Bucket S3 `rgtrovao-terraform-bucket` criado na região `us-east-1` para armazenar o estado do Terraform
-
-## 📦 Instalação
-
-1. Clone o repositório:
-```bash
-cd /Users/raphaeltrovao/Downloads/Terraform-EKS
+```
+┌─────────────────────────────────────────┐
+│         AWS Region (us-east-1)          │
+│                                         │
+│  ┌───────────────────────────────────┐ │
+│  │    VPC (10.0.0.0/16)              │ │
+│  │                                   │ │
+│  │  Public Subnets (2 AZs)           │ │
+│  │  ├─ Internet Gateway              │ │
+│  │  └─ NAT Gateway                   │ │
+│  │                                   │ │
+│  │  Private Subnets (2 AZs)          │ │
+│  │  └─ EKS Worker Nodes (t3.micro)   │ │
+│  │                                   │ │
+│  │  EKS Control Plane (Managed)      │ │
+│  └───────────────────────────────────┘ │
+└─────────────────────────────────────────┘
 ```
 
-2. Copie o arquivo de exemplo de variáveis:
+**Recursos provisionados:** 25 recursos AWS
+
+## 🚀 Quick Start
+
+### Pré-requisitos
+
 ```bash
+# Instalar ferramentas
+terraform --version  # >= 1.0
+aws configure        # Configurar credenciais
+kubectl version      # Cliente Kubernetes
+```
+
+### 1. Clonar e Configurar
+
+```bash
+# Criar bucket S3 para estado do Terraform
+aws s3 mb s3://seu-bucket-terraform --region us-east-1
+
+# Editar main.tf e alterar o bucket
+# backend "s3" {
+#   bucket = "seu-bucket-terraform"  # ← Altere aqui
+# }
+
+# Criar arquivo de configuração
 cp terraform.tfvars.example terraform.tfvars
+# Edite terraform.tfvars com suas preferências
 ```
 
-3. Edite o arquivo `terraform.tfvars` com suas configurações:
-```hcl
-aws_region   = "us-east-1"
-project_name = "rgtrovao-project"
-environment  = "dev"
-vpc_name     = "rgtrovao-vpc"
-vpc_cidr     = "10.0.0.0/16"
-```
-
-## 🔧 Uso
-
-### Backend S3
-
-O projeto está configurado para armazenar o estado do Terraform no bucket S3 `rgtrovao-terraform-bucket`. Certifique-se de que:
-
-1. O bucket S3 existe na região `us-east-1`
-2. Você tem permissões para ler/escrever no bucket
-3. O versionamento está habilitado (recomendado para segurança)
-
-### Inicializar o Terraform
+### 2. Provisionar Infraestrutura
 
 ```bash
+# Inicializar Terraform
 terraform init
-```
 
-**Nota**: Na primeira inicialização, o Terraform pode solicitar confirmação para migrar o estado local para o backend S3. Digite `yes` para confirmar.
-
-### Validar a configuração
-
-```bash
-terraform validate
-```
-
-### Visualizar o plano de execução
-
-```bash
+# Visualizar o que será criado
 terraform plan
-```
 
-### Aplicar as mudanças
-
-```bash
+# Criar infraestrutura (~20-25 minutos)
 terraform apply
 ```
 
-### Destruir a infraestrutura
+### 3. Configurar kubectl
 
 ```bash
+# Configurar acesso ao cluster
+aws eks update-kubeconfig --region us-east-1 --name SEU-PROJETO-eks
+
+# Verificar nodes
+kubectl get nodes
+```
+
+### 4. Testar o Cluster
+
+```bash
+# Deploy de teste
+kubectl create deployment nginx --image=nginx
+kubectl expose deployment nginx --port=80 --type=LoadBalancer
+
+# Ver serviços
+kubectl get svc
+
+# Acessar aplicação
+curl http://<EXTERNAL-IP>
+```
+
+### 5. Destruir Infraestrutura (IMPORTANTE!)
+
+```bash
+# Limpar recursos Kubernetes
+kubectl delete deployment nginx
+kubectl delete svc nginx
+
+# Destruir infraestrutura (~10-15 minutos)
 terraform destroy
 ```
 
-## 📝 Variáveis Principais
+## 📁 Estrutura do Projeto
+
+```
+projeto-eks/
+├── main.tf                    # Configuração principal
+├── variables.tf               # Variáveis de entrada
+├── outputs.tf                 # Outputs (endpoints, comandos)
+├── terraform.tfvars.example   # Exemplo de configuração
+├── modules/
+│   ├── network/               # VPC, Subnets, IGW, NAT, RT
+│   │   ├── main.tf
+│   │   ├── variables.tf
+│   │   └── outputs.tf
+│   └── eks/                   # Cluster EKS + Node Group
+│       ├── main.tf
+│       ├── variables.tf
+│       └── outputs.tf
+├── README.md                  # Este arquivo
+├── CUSTOS.md                  # Análise detalhada de custos
+├── CHANGELOG.md               # Histórico de mudanças
+└── HOWTO.md                   # Guia completo passo a passo
+```
+
+## ⚙️ Variáveis Principais
 
 | Variável | Descrição | Padrão |
 |----------|-----------|--------|
-| `aws_region` | Região AWS | `us-east-1` |
 | `project_name` | Nome do projeto | `rgtrovao-project` |
-| `environment` | Ambiente (dev/staging/prod) | `dev` |
-| `vpc_name` | Nome da VPC | `rgtrovao-vpc` |
-| `vpc_cidr` | CIDR block da VPC | `10.0.0.0/16` |
-| `availability_zones` | Lista de AZs | `["us-east-1a", "us-east-1b", "us-east-1c"]` |
-| `public_subnet_cidrs` | CIDRs das subnets públicas | `["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]` |
-| `private_subnet_cidrs` | CIDRs das subnets privadas | `["10.0.11.0/24", "10.0.12.0/24", "10.0.13.0/24"]` |
-| `database_subnet_cidrs` | CIDRs das subnets de BD | `["10.0.21.0/24", "10.0.22.0/24", "10.0.23.0/24"]` |
-| `enable_nat_gateway` | Habilitar NAT Gateway | `true` |
-<<<<<<< HEAD
-<<<<<<< HEAD
-| `eks_cluster_version` | Versão do Kubernetes no EKS | `"1.30"` |
-| `eks_node_desired_size` | Número desejado de nós no node group | `2` |
-| `eks_node_min_size` | Número mínimo de nós no node group | `2` |
-| `eks_node_max_size` | Número máximo de nós no node group | `3` |
-| `eks_node_instance_types` | Tipos de instância dos nós EKS | `["t3.micro"]` |
-| `eks_node_disk_size` | Tamanho do disco dos nós EKS (GB) | `20` |
-| `enable_vpc_cni_addon` | Habilitar add-on VPC CNI gerenciado | `true` |
-| `enable_coredns_addon` | Habilitar add-on CoreDNS gerenciado | `true` |
-| `enable_kube_proxy_addon` | Habilitar add-on kube-proxy gerenciado | `true` |
-=======
->>>>>>> parent of e1972b4 (Inclusão do módulo de EKS)
-=======
->>>>>>> parent of e1972b4 (Inclusão do módulo de EKS)
+| `aws_region` | Região AWS | `us-east-1` |
+| `vpc_cidr` | CIDR da VPC | `10.0.0.0/16` |
+| `availability_zones` | AZs a usar | `["us-east-1a", "us-east-1b"]` |
+| `enable_nat_gateway` | Habilitar NAT | `true` |
+| `eks_cluster_version` | Versão Kubernetes | `1.30` |
+| `eks_node_capacity_type` | SPOT ou ON_DEMAND | `SPOT` |
+| `eks_node_instance_types` | Tipo de instância | `["t3.micro"]` |
+| `eks_node_desired_size` | Número de nodes | `2` |
 
-## 📤 Outputs
+## 📤 Outputs Disponíveis
 
-O projeto gera os seguintes outputs:
+Após o deploy, você terá acesso a:
 
-- `vpc_id`: ID da VPC criada
-- `vpc_cidr_block`: CIDR block da VPC
-- `internet_gateway_id`: ID do Internet Gateway
-- `public_subnet_ids`: IDs das subnets públicas
-- `private_subnet_ids`: IDs das subnets privadas
-- `database_subnet_ids`: IDs das subnets de banco de dados
-- `public_route_table_id`: ID da route table pública
-- `private_route_table_ids`: IDs das route tables privadas
-- `database_route_table_ids`: IDs das route tables de banco de dados
-- `nat_gateway_ids`: IDs dos NAT Gateways
-<<<<<<< HEAD
-<<<<<<< HEAD
-- `eks_cluster_name`: Nome do cluster EKS
-- `eks_cluster_endpoint`: Endpoint da API do cluster EKS
-- `eks_cluster_ca_certificate`: Certificado CA (base64) do cluster EKS
-- `eks_node_group_name`: Nome do node group EKS
-- `eks_configure_kubectl`: Comando para configurar o kubectl
-- `eks_test_connection`: Comando para testar a conexão com o cluster
-- `vpc_cni_addon_arn`: ARN do add-on VPC CNI (se habilitado)
-- `coredns_addon_arn`: ARN do add-on CoreDNS (se habilitado)
-- `kube_proxy_addon_arn`: ARN do add-on kube-proxy (se habilitado)
-=======
->>>>>>> parent of e1972b4 (Inclusão do módulo de EKS)
-=======
->>>>>>> parent of e1972b4 (Inclusão do módulo de EKS)
-
-## 🏷️ Nomenclatura
-
-O projeto segue uma nomenclatura intuitiva e consistente:
-
-- **VPC**: `{vpc_name}`
-- **Internet Gateway**: `{vpc_name}-igw`
-- **Subnets Públicas**: `{vpc_name}-public-subnet-{número}`
-- **Subnets Privadas**: `{vpc_name}-private-subnet-{número}`
-- **Subnets de BD**: `{vpc_name}-database-subnet-{número}`
-- **NAT Gateways**: `{vpc_name}-nat-gateway-{número}`
-- **Route Tables**: `{vpc_name}-{tipo}-rt-{número}`
-
-## 🔒 Boas Práticas Implementadas
-
-1. **Modularidade**: Código organizado em módulos reutilizáveis
-2. **Separação de Concerns**: Cada módulo tem responsabilidade única
-3. **Nomenclatura Consistente**: Nomes descritivos e padronizados
-4. **Tags Padronizadas**: Tags consistentes em todos os recursos
-5. **Alta Disponibilidade**: Recursos distribuídos em múltiplas AZs
-6. **Segurança**: Subnets de banco de dados sem acesso à internet
-7. **Documentação**: Código e README bem documentados
-
-## 🔐 Segurança
-
-- Subnets de banco de dados não têm rota para internet
-- NAT Gateways permitem acesso à internet apenas para subnets privadas
-- DNS habilitado para resolução de nomes dentro da VPC
-- Tags de segurança aplicadas a todos os recursos
-
-## 💰 Custos
-
-**Importante**: NAT Gateways têm custo associado. Para ambientes de desenvolvimento, considere desabilitar usando:
-
-```hcl
-enable_nat_gateway = false
+```bash
+terraform output cluster_name              # Nome do cluster
+terraform output cluster_endpoint          # URL da API
+terraform output configure_kubectl         # Comando para configurar kubectl
+terraform output vpc_id                    # ID da VPC
+terraform output private_subnet_ids        # IDs das subnets privadas
 ```
 
-## 📚 Módulos
+## 💡 Configurações Recomendadas
 
-### Módulo VPC
-Cria a VPC com configurações de DNS.
+### Para Desenvolvimento/Estudos
 
-### Módulo Internet Gateway
-Cria e anexa o Internet Gateway à VPC.
+```hcl
+# terraform.tfvars
+enable_nat_gateway = false              # Economiza $32/mês
+eks_node_capacity_type = "SPOT"         # Economiza 70%
+eks_node_instance_types = ["t3.micro"]
+eks_node_desired_size = 2
+```
 
-### Módulo Subnets
-Cria subnets públicas, privadas e de banco de dados, além de NAT Gateways quando habilitados.
+**Custo**: ~$8/mês (usando 10h/semana)
 
-### Módulo Route Tables
-Configura as tabelas de roteamento para cada tipo de subnet.
+### Para Produção
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-### Módulo EKS
-Cria o cluster EKS e um node group gerenciado com nós `t3.micro` em subnets privadas, seguindo boas práticas (IAM Roles dedicadas, security groups separados para control plane e nós, e auto-scaling configurável).
+```hcl
+# terraform.tfvars
+enable_nat_gateway = true
+eks_node_capacity_type = "ON_DEMAND"    # Estabilidade
+eks_node_instance_types = ["t3.small"]
+eks_node_min_size = 3
+eks_node_max_size = 10
+eks_node_desired_size = 3
+```
 
-**Add-ons Essenciais Gerenciados:**
-- **VPC CNI**: Plugin de rede para conectar pods à VPC
-- **CoreDNS**: Servidor DNS para resolução de nomes dentro do cluster
-- **kube-proxy**: Componente de rede para gerenciar Services do Kubernetes
+**Custo**: ~$176/mês (24/7)
 
-Todos os add-ons são gerenciados pela AWS, facilitando atualizações e manutenção.
+## 🎯 Casos de Uso
 
-=======
->>>>>>> parent of e1972b4 (Inclusão do módulo de EKS)
-=======
->>>>>>> parent of e1972b4 (Inclusão do módulo de EKS)
+### ✅ Ideal para:
+- 📚 Aprendizado de Kubernetes e EKS
+- 🧪 Ambiente de testes e experimentação
+- 👨‍💻 Desenvolvimento de aplicações cloud-native
+- 🎓 Preparação para certificações (CKA, CKAD, AWS)
+- 💼 Proof of Concepts (POCs)
+
+### ⚠️ Considerar outras opções para:
+- 🏭 Produção 24/7 com alta disponibilidade
+- 💰 Orçamento muito restrito (<$50/mês)
+- 🔒 Ambientes com compliance rigoroso
+
+## 📚 Documentação Adicional
+
+- **[HOWTO.md](HOWTO.md)** - Guia passo a passo detalhado
+- **[CUSTOS.md](CUSTOS.md)** - Análise completa de custos por cenário
+- **[CHANGELOG.md](CHANGELOG.md)** - Histórico de otimizações
+
+## 🔧 Comandos Úteis
+
+```bash
+# Validar configuração
+terraform validate
+
+# Formatar código
+terraform fmt -recursive
+
+# Ver estado atual
+terraform show
+
+# Atualizar apenas rede
+terraform apply -target=module.network
+
+# Ver logs de custos
+aws ce get-cost-and-usage \
+  --time-period Start=2026-01-01,End=2026-01-31 \
+  --granularity MONTHLY \
+  --metrics BlendedCost
+```
+
 ## 🐛 Troubleshooting
 
-### Erro: "InvalidParameterValue"
-Verifique se os CIDR blocks não se sobrepõem e estão dentro do range da VPC.
+### Erro: "Error creating EKS Cluster"
+- Verifique permissões IAM da sua conta AWS
+- Confirme limites de serviço (Service Quotas)
 
-### Erro: "InsufficientAddressesInSubnet"
-Aumente o tamanho do CIDR block ou reduza o número de subnets.
+### kubectl não conecta
+```bash
+# Reconfigurar
+aws eks update-kubeconfig --region us-east-1 --name SEU-CLUSTER
 
-### NAT Gateway não está funcionando
-Verifique se o NAT Gateway está na subnet pública e se a route table privada está configurada corretamente.
+# Verificar credenciais
+aws sts get-caller-identity
+```
 
-### Add-ons EKS não estão instalando
-Os add-ons são instalados após a criação do cluster e node group. Se houver problemas:
-1. Verifique se o cluster está no estado `ACTIVE`
-2. Verifique se o node group está no estado `ACTIVE`
-3. Para CoreDNS, aguarde a criação do node group primeiro
-4. Verifique os logs do CloudWatch para mais detalhes
+### Custo maior que esperado
+- Verifique se há recursos não destruídos: `aws resourcegroupstaggingapi get-resources`
+- Confirme que Load Balancers foram deletados
+- Revise NAT Gateway (maior custo variável)
+
+## 🔒 Segurança
+
+✅ **Implementado:**
+- Nodes em subnets privadas
+- Security groups restritivos
+- IAM roles com princípio do menor privilégio
+- Estado do Terraform em S3 com versionamento
+
+⚠️ **Recomendações adicionais para produção:**
+- Habilitar encryption de secrets no EKS
+- Implementar Pod Security Standards
+- Configurar Network Policies
+- Ativar audit logs do control plane
+- Usar AWS Secrets Manager para credenciais
+
+## 🤝 Contribuindo
+
+Melhorias são bem-vindas! Para contribuir:
+
+1. Fork o projeto
+2. Crie uma branch (`git checkout -b feature/melhoria`)
+3. Commit suas mudanças (`git commit -m 'feat: adiciona xyz'`)
+4. Push para a branch (`git push origin feature/melhoria`)
+5. Abra um Pull Request
 
 ## 📄 Licença
 
-Este projeto está sob a licença MIT.
+MIT License - veja arquivo LICENSE para detalhes
 
-## 👥 Contribuindo
+## 🎓 Recursos Adicionais
 
-Contribuições são bem-vindas! Por favor, abra uma issue ou pull request.
+- [Documentação oficial do EKS](https://docs.aws.amazon.com/eks/)
+- [Terraform AWS Provider](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
+- [Kubernetes Documentation](https://kubernetes.io/docs/)
+- [EKS Best Practices](https://aws.github.io/aws-eks-best-practices/)
+- [Spot Instances Best Practices](https://aws.amazon.com/ec2/spot/getting-started/)
 
-## 📞 Suporte
+## ⭐ Apoie o Projeto
 
-Para questões ou problemas, abra uma issue no repositório.
-# projeto-eks
+Se este projeto te ajudou:
+- ⭐ Dê uma estrela no GitHub
+- 🔄 Compartilhe com outros desenvolvedores
+- 💬 Deixe feedback ou sugestões
+- 📝 Escreva um artigo sobre sua experiência
+
+---
+
+**Criado com ❤️ para a comunidade de desenvolvedores**
+
+*Questões? Abra uma issue no GitHub!*

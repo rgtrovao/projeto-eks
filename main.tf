@@ -27,83 +27,39 @@ provider "aws" {
   }
 }
 
-# Módulo VPC
-module "vpc" {
-  source = "./modules/vpc"
-
-  vpc_name             = var.vpc_name
-  vpc_cidr             = var.vpc_cidr
-  enable_dns_hostnames = var.enable_dns_hostnames
-  enable_dns_support   = var.enable_dns_support
-  enable_nat_gateway   = var.enable_nat_gateway
-
-  tags = var.tags
+locals {
+  cluster_name = "${var.project_name}-eks"
 }
 
-# Módulo Internet Gateway
-module "internet_gateway" {
-  source = "./modules/internet_gateway"
+# Módulo de Rede (VPC, Subnets, IGW, NAT, Route Tables)
+module "network" {
+  source = "./modules/network"
 
-  vpc_id   = module.vpc.vpc_id
-  vpc_name = var.vpc_name
-
-  tags = var.tags
-}
-
-# Módulo Subnets
-module "subnets" {
-  source = "./modules/subnets"
-
-  vpc_id   = module.vpc.vpc_id
-  vpc_name = var.vpc_name
-
+  project_name       = var.project_name
+  vpc_cidr           = var.vpc_cidr
   availability_zones = var.availability_zones
-
-  public_subnet_cidrs   = var.public_subnet_cidrs
-  private_subnet_cidrs  = var.private_subnet_cidrs
-  database_subnet_cidrs = var.database_subnet_cidrs
-
-  internet_gateway_id = module.internet_gateway.internet_gateway_id
-  enable_nat_gateway  = var.enable_nat_gateway
-
-  tags = var.tags
-}
-
-# Módulo Route Tables
-module "route_tables" {
-  source = "./modules/route_tables"
-
-  vpc_id              = module.vpc.vpc_id
-  vpc_name            = var.vpc_name
-  internet_gateway_id = module.internet_gateway.internet_gateway_id
-
-  public_subnet_ids   = module.subnets.public_subnet_ids
-  private_subnet_ids  = module.subnets.private_subnet_ids
-  database_subnet_ids = module.subnets.database_subnet_ids
-
   enable_nat_gateway = var.enable_nat_gateway
-  nat_gateway_ids    = var.enable_nat_gateway ? module.subnets.nat_gateway_ids : []
 
   tags = var.tags
 }
 
-# Módulo EKS (cluster e node group)
+# Módulo EKS (Cluster + Node Group)
 module "eks" {
   source = "./modules/eks"
 
-  cluster_name    = "${var.project_name}-eks-cluster"
-  cluster_version = var.eks_cluster_version
+  cluster_name       = local.cluster_name
+  cluster_version    = var.eks_cluster_version
+  vpc_id             = module.network.vpc_id
+  private_subnet_ids = module.network.private_subnet_ids
+  public_subnet_ids  = module.network.public_subnet_ids
 
-  vpc_id             = module.vpc.vpc_id
-  private_subnet_ids = module.subnets.private_subnet_ids
-  public_subnet_ids  = module.subnets.public_subnet_ids
-
-  node_group_name = "${var.project_name}-eks-node-group"
+  node_group_name = "${local.cluster_name}-nodes"
   desired_size    = var.eks_node_desired_size
   min_size        = var.eks_node_min_size
   max_size        = var.eks_node_max_size
   instance_types  = var.eks_node_instance_types
-  node_disk_size  = var.eks_node_disk_size
+  disk_size       = var.eks_node_disk_size
+  capacity_type   = var.eks_node_capacity_type
 
   tags = var.tags
 }
