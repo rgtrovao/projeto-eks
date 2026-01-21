@@ -79,8 +79,8 @@ choco install kubernetes-cli # Windows
 
 ```bash
 aws configure
-# AWS Access Key ID: AKIAIOSFODNN7EXAMPLE
-# AWS Secret Access Key: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+# AWS Access Key ID: <YOUR_ACCESS_KEY_ID>
+# AWS Secret Access Key: <YOUR_SECRET_ACCESS_KEY>
 # Default region name: us-east-1
 # Default output format: json
 ```
