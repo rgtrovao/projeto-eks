@@ -41,7 +41,7 @@ This guide was created for those who are **studying** Kubernetes and want **maxi
 
 By the end of this guide, you'll have:
 
-✅ Working EKS cluster (Kubernetes 1.30)  
+✅ Working EKS cluster (Kubernetes 1.34)  
 ✅ Complete network infrastructure (VPC, Subnets, NAT, IGW)  
 ✅ Practical Terraform knowledge  
 ✅ 2 configured worker nodes  
@@ -79,8 +79,8 @@ choco install kubernetes-cli # Windows
 
 ```bash
 aws configure
-# AWS Access Key ID: <YOUR_ACCESS_KEY_ID>
-# AWS Secret Access Key: <YOUR_SECRET_ACCESS_KEY>
+# AWS Access Key ID: [your-access-key-id]
+# AWS Secret Access Key: [your-secret-access-key]
 # Default region name: us-east-1
 # Default output format: json
 ```
@@ -122,7 +122,7 @@ Your AWS account needs permissions for:
 │  │  └─────────────┘  └──────────────┘ │   │
 │  │                                     │   │
 │  │  EKS Control Plane (AWS Managed)    │   │
-│  │  ↑ Kubernetes 1.30                  │   │
+│  │  ↑ Kubernetes 1.34                  │   │
 │  └─────────────────────────────────────┘   │
 └─────────────────────────────────────────────┘
 ```
@@ -205,7 +205,7 @@ availability_zones = ["us-east-1a", "us-east-1b"]
 enable_nat_gateway = true
 
 # EKS - Spot saves 70%!
-eks_cluster_version = "1.30"
+eks_cluster_version = "1.34"
 eks_node_capacity_type = "SPOT"              # SPOT or ON_DEMAND
 eks_node_instance_types = ["t3.micro"]
 eks_node_desired_size = 2
@@ -282,8 +282,8 @@ kubectl get nodes
 
 # Should show 2 nodes:
 # NAME                         STATUS   ROLES    AGE   VERSION
-# ip-10-0-10-xx.ec2.internal  Ready    <none>   3m    v1.30.x
-# ip-10-0-11-xx.ec2.internal  Ready    <none>   3m    v1.30.x
+# ip-10-0-10-xx.ec2.internal  Ready    <none>   3m    v1.34.x
+# ip-10-0-11-xx.ec2.internal  Ready    <none>   3m    v1.34.x
 ```
 
 ---

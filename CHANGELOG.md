@@ -33,7 +33,7 @@ This version represents a complete project refactoring focused on:
 - **NAT Gateway**: 3 NAT Gateways (1 per AZ) → 1 NAT Gateway ($64/month savings)
 - **Dynamic CIDRs**: Using `cidrsubnet()` instead of hardcoded lists
 - **EKS Security Group**: Egress restricted to VPC CIDR (was: 0.0.0.0/0)
-- **Kubernetes version**: 1.28 → 1.30
+- **Kubernetes version**: 1.28 → 1.34
 - **README.md**: Completely rewritten with focus on quick start
 - **Variables**: Organized and documented
 - **Outputs**: Simplified and more useful

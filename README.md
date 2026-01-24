@@ -4,7 +4,7 @@
 
 [![Terraform](https://img.shields.io/badge/Terraform-1.0+-623CE4?logo=terraform)](https://www.terraform.io/)
 [![AWS](https://img.shields.io/badge/AWS-EKS-FF9900?logo=amazon-aws)](https://aws.amazon.com/eks/)
-[![Kubernetes](https://img.shields.io/badge/Kubernetes-1.30-326CE5?logo=kubernetes)](https://kubernetes.io/)
+[![Kubernetes](https://img.shields.io/badge/Kubernetes-1.34-326CE5?logo=kubernetes)](https://kubernetes.io/)
 
 ## ⚠️ IMPORTANT: Initial Setup
 
@@ -29,7 +29,7 @@ aws s3 mb s3://your-unique-terraform-bucket --region us-east-1
 Provisions a complete and production-ready **Amazon EKS** (managed Kubernetes) infrastructure using **Terraform**, including:
 
 - ✅ VPC with public and private subnets in 2 AZs
-- ✅ EKS Cluster (Kubernetes 1.30)
+- ✅ EKS Cluster (Kubernetes 1.34)
 - ✅ Node Group with Spot Instances (70% cheaper)
 - ✅ NAT Gateway, Internet Gateway, and Route Tables
 - ✅ Configured IAM Roles and Security Groups
@@ -183,7 +183,7 @@ eks-project/
 | `vpc_cidr` | VPC CIDR | `10.0.0.0/16` |
 | `availability_zones` | AZs to use | `["us-east-1a", "us-east-1b"]` |
 | `enable_nat_gateway` | Enable NAT | `true` |
-| `eks_cluster_version` | Kubernetes version | `1.30` |
+| `eks_cluster_version` | Kubernetes version | `1.34` |
 | `eks_node_capacity_type` | SPOT or ON_DEMAND | `SPOT` |
 | `eks_node_instance_types` | Instance type | `["t3.micro"]` |
 | `eks_node_desired_size` | Number of nodes | `2` |

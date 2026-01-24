@@ -44,7 +44,7 @@ variable "tags" {
 variable "eks_cluster_version" {
   description = "Kubernetes version"
   type        = string
-  default     = "1.30"
+  default     = "1.34"
 }
 
 variable "eks_node_desired_size" {

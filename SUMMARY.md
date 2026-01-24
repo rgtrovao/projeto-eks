@@ -4,12 +4,12 @@
 
 ## 🎯 Overview
 
-Complete Terraform project to provision **Amazon EKS** cluster (Kubernetes 1.30) on AWS with focus on **cost savings** and **best practices**.
+Complete Terraform project to provision **Amazon EKS** cluster (Kubernetes 1.34) on AWS with focus on **cost savings** and **best practices**.
 
 ### ✨ Highlights
 
 - 💰 **Up to 94% savings** using on-demand strategy
-- ☸️ **Kubernetes 1.30** updated
+- ☸️ **Kubernetes 1.34** updated
 - 🎯 **Spot Instances** by default (70% cheaper)
 - 📦 **2 consolidated modules** (network + eks)
 - 📚 **Complete and practical documentation**
@@ -149,7 +149,7 @@ availability_zones = ["us-east-1a", "us-east-1b"]
 enable_nat_gateway = true  # $32/month
 
 # EKS
-eks_cluster_version = "1.30"
+eks_cluster_version = "1.34"
 eks_node_capacity_type = "SPOT"  # 70% savings
 eks_node_instance_types = ["t3.micro"]
 eks_node_desired_size = 2
@@ -162,7 +162,7 @@ eks_node_desired_size = 2
 | **Modules** | 5 | 2 | -60% complexity |
 | **NAT Gateways** | 3 | 1 | -$64/month |
 | **Compute** | On-Demand | Spot | -70% |
-| **Kubernetes** | 1.28 | 1.30 | Updated |
+| **Kubernetes** | 1.28 | 1.34 | Updated |
 | **Database Subnets** | Yes | No | Simplified |
 | **Documentation** | Basic | Complete | +400% |
 | **Cost 24/7** | $181 | $127 | -30% |
